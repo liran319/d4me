@@ -1,7 +1,10 @@
 import Vue from 'vue'
 /* 组件 */
-import Mint from 'mint-ui';
-Vue.use(Mint);
+import Mint from 'mint-ui'
+Vue.use(Mint)
+/* 自定义全局组件*/
+import Page from '@/container/Page'
+Vue.component('Page', Page)
 
 import App from './App'
 
