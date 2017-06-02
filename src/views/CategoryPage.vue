@@ -1,7 +1,9 @@
 <template>
-    <div></div>
+  <Page id="category-page">
+    category
+  </Page>
 </template>
 
 <script>
-    export default {}
+  export default {}
 </script>

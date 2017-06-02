@@ -4,12 +4,14 @@
 // normalize css
 @import 'normalize.scss';
 @import 'scaffold.scss';
+@import 'icon';
 @import 'variables.scss';
 
 //App Components
+@import "mintui";
 @import 'components/page';
+@import 'components/tabbar';
 
 // Global Transition Effects
 @import 'transition.scss';
-
 

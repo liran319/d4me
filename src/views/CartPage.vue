@@ -1,7 +1,9 @@
 <template>
-    <div></div>
+  <Page id="cart-page">
+    cart
+  </Page>
 </template>
 
 <script>
-    export default {}
+  export default {}
 </script>

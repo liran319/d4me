@@ -1,0 +1,48 @@
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:24px;
+  height:24px;
+}
+
+.icon-home{
+  background-image: url('../assets/home@2x.png');
+}
+.icon-category{
+  background-image: url('../assets/category@2x.png');
+}
+.icon-collection{
+  background-image: url('../assets/collection@2x.png');
+}
+.icon-cart{
+  background-image: url('../assets/cart@2x.png');
+}
+.icon-account{
+  background-image: url('../assets/account@2x.png');
+}
+.icon-back{
+  background-image: url('../assets/back@2x.png');
+}
+.icon-share{
+  background-image: url('../assets/share@2x.png');
+}
+
+.is-selected{
+  .icon-home{
+    background-image: url('../assets/home_selected@2x.png');
+  }
+  .icon-category{
+    background-image: url('../assets/category_selected@2x.png');
+  }
+  .icon-collection{
+    background-image: url('../assets/collection_selected@2x.png');
+  }
+  .icon-cart{
+    background-image: url('../assets/cart_selected@2x.png');
+  }
+  .icon-account{
+    background-image: url('../assets/account_selected@2x.png');
+  }
+}

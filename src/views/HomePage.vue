@@ -1,6 +1,6 @@
 <template>
-  <Page>
-
+  <Page id="home-page">
+    home
   </Page>
 </template>
 

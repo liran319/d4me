@@ -1,7 +1,9 @@
 <template>
-    <div></div>
+  <Page id="collection-page">
+    collection
+  </Page>
 </template>
 
 <script>
-    export default {}
+  export default {}
 </script>

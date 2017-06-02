@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import hooks from './hooks'
+import store from '../store'
 /* 页面列表 */
 import HomePage from '@/views/HomePage'
 import CategoryPage from '@/views/CategoryPage'
@@ -20,23 +22,32 @@ import SettingContactPage from '@/views/SettingContactPage'
 
 Vue.use(Router)
 
-export default new Router({
+export default hooks(new Router({
   mode: 'history',
   routes: [
     {
       path: '',
       name: 'home',
-      component: HomePage
+      component: HomePage,
+      meta:{
+        noPageAnimation:true
+      }
     },
     {
       path: '/category',
       name: 'category',
-      component: CategoryPage
+      component: CategoryPage,
+      meta:{
+        noPageAnimation:true
+      }
     },
     {
       path: '/collection',
       name: 'collection',
-      component: CollectionPage
+      component: CollectionPage,
+      meta:{
+        noPageAnimation:true
+      }
     },
     {
       path: '/search',
@@ -56,12 +67,18 @@ export default new Router({
     {
       path: '/cart',
       name: 'cart',
-      component: CartPage
+      component: CartPage,
+      meta:{
+        noPageAnimation:true
+      }
     },
     {
       path: '/account',
       name: 'account',
-      component: AccountPage
+      component: AccountPage,
+      meta:{
+        noPageAnimation:true
+      }
     },
     {
       path: '/order',
@@ -104,4 +121,4 @@ export default new Router({
       component: SettingContactPage
     }
   ]
-})
+}), store);

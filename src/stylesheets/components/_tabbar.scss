@@ -1,0 +1,13 @@
+.mint-tabbar{
+  z-index:999999;
+}
+
+.mint-tab-item{
+  .mint-tab-item-label{
+    -webkit-font-smoothing: antialiased;
+  }
+  &.is-selected{
+    .mint-tab-item-icon{
+    }
+  }
+}
