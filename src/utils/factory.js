@@ -1,28 +1,12 @@
-var events_list = {}
-
-export const getTypes = (storeName)=>{
-  return events_list[storeName]
-}
-
-export const getEvents = (storeName, list)=>{
-  var results = {}
-  for(var name of list){
-    results[name] = `${storeName}/${name}`;
-  }
-  return results
-}
-
-export const define = (storeName, ...mixins)=>{
-  var state = {}, actions = {}, mutations = {}, events = {}
+export const define = ( ...mixins)=>{
+  var state = {}, actions = {}, mutations = {}
   for(var mixin of mixins){
-    var module = mixin(storeName)
-    state = Object.assign(state, module.state)
-    actions = Object.assign(actions, module.actions)
-    mutations = Object.assign(mutations, module.mutations)
-    events = Object.assign(events, module.events)
+    state = Object.assign(state, mixin.state)
+    actions = Object.assign(actions, mixin.actions)
+    mutations = Object.assign(mutations, mixin.mutations)
   }
-  events_list[storeName] = events
   return {
+    namespaced: true,
     state,
     actions,
     mutations

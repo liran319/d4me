@@ -20,3 +20,16 @@
     -webkit-overflow-scrolling: touch;  // scroll effect optimize in safari
   }
 }
+
+#download-bar{
+  width:100%;
+  position: absolute;
+  bottom: 55px;
+  z-index: 99999;
+}
+
+#home-page{
+  .product-list{
+    height:calc(100% - 44px)!important;
+  }
+}

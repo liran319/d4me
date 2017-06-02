@@ -1,0 +1,18 @@
+.product-list{
+  padding:5px;
+  overflow:auto;
+  -webkit-overflow-scrolling: touch;
+  .product-item{
+    position:relative;
+    text-align: center;
+    margin:5px;
+    width:calc(50% - 15px);
+    background-color: #fff;
+    >img{
+      width:100%;
+    }
+    >.price{
+      color:$primary-color;
+    }
+  }
+}

@@ -2,6 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+import { define } from '@/utils/factory'
+import rest from '@/store/mixins/rest'
+
+const products = define(rest('/products'))
+
 import createLogger from 'vuex/dist/logger'
 
 let plugins = []
@@ -22,7 +27,8 @@ const store = new Vuex.Store({
   mutations,
   plugins,
   modules: {
-    transition
+    transition,
+    products
   },
   strict: false
 })

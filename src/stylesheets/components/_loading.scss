@@ -1,0 +1,9 @@
+.loading-view{
+  width:100%;
+  text-align: center;
+  padding-top:15px;
+  position: absolute;
+  >span{
+    display: inline-block!important;
+  }
+}

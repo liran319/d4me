@@ -3,6 +3,7 @@
     <transition :name="transitionName" @afterLeave="clearTransition">
       <router-view></router-view>
     </transition>
+    <img id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload"/>
     <mt-tabbar :value="currentTab" @input="onTabChange">
       <mt-tab-item id="home">
         <div slot="icon" class="icon icon-home"></div>
@@ -48,6 +49,9 @@
       },
       onTabChange(value){
         this.$router.push(`/${value=='home'?'':value}`)
+      },
+      goDownload(){
+        console.log('download')
       }
     }
   };

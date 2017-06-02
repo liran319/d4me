@@ -3,6 +3,9 @@ import Vue from 'vue'
 import Mint from 'mint-ui'
 Vue.use(Mint)
 /* 自定义全局组件*/
+import VueMasonryPlugin from 'vue-masonry';
+Vue.use(VueMasonryPlugin)
+
 import Page from '@/container/Page'
 Vue.component('Page', Page)
 

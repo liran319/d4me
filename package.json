@@ -15,6 +15,7 @@
     "lodash": "^4.17.4",
     "mint-ui": "^2.2.7",
     "vue": "^2.2.6",
+    "vue-masonry": "^0.10.1",
     "vue-router": "^2.3.1",
     "vuelidate": "^0.4.3",
     "vuex": "^2.3.1",
