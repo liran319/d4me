@@ -1,0 +1,15 @@
+//mixin
+@import "bourbon/bourbon";
+
+// normalize css
+@import 'normalize.scss';
+@import 'scaffold.scss';
+@import 'variables.scss';
+
+//App Components
+@import 'components/page';
+
+// Global Transition Effects
+@import 'transition.scss';
+
+
