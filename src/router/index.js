@@ -67,7 +67,10 @@ export default hooks(new Router({
     {
       path: '/product',
       name: 'product',
-      component: ProductPage
+      component: ProductPage,
+      meta:{
+        hideTab:true
+      }
     },
     {
       path: '/product/:id',

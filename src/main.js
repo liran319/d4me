@@ -9,7 +9,11 @@ import VueWaypoint from 'vue-waypoint'
 Vue.use(VueWaypoint)
 
 import Page from '@/container/Page'
+import FilterBar from '@/components/FilterBar'
+import FilterButton from '@/components/FilterButton'
 Vue.component('Page', Page)
+Vue.component('filter-button', FilterButton)
+Vue.component('filter-bar', FilterBar)
 
 import App from './App'
 
