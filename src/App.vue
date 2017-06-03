@@ -3,8 +3,8 @@
     <transition :name="transitionName" @afterLeave="clearTransition">
       <router-view></router-view>
     </transition>
-    <img id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload"/>
-    <mt-tabbar :value="currentTab" @input="onTabChange">
+    <img v-if="!$route.meta.hideTab" id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload"/>
+    <mt-tabbar v-if="!$route.meta.hideTab" :value="currentTab" @input="onTabChange">
       <mt-tab-item id="home">
         <div slot="icon" class="icon icon-home"></div>
         首页

@@ -6,6 +6,19 @@ import { define } from '@/utils/factory'
 import rest from '@/store/mixins/rest'
 
 const products = define(rest('/products'))
+const articles = define(rest('/articles'))
+const article = define(rest('/articles'))
+const collections = define(rest('/collections'))
+const addresses = define(rest('/addresses'))
+const banners = define(rest('/banners'))
+const brands = define(rest('/brands'))
+const coupons = define(rest('/coupons'))
+const favs = define(rest('/favs'))
+const messages = define(rest('/messages'))
+const mixes = define(rest('/mixes'))
+const orders = define(rest('/orders'))
+const rewards = define(rest('/rewards'))
+const users = define(rest('/users'))
 
 import createLogger from 'vuex/dist/logger'
 
@@ -28,7 +41,18 @@ const store = new Vuex.Store({
   plugins,
   modules: {
     transition,
-    products
+    products,
+    banners,
+    collections,
+    article,
+    articles,
+    addresses,
+    favs,
+    messages,
+    mixes,
+    orders,
+    rewards,
+    users
   },
   strict: false
 })

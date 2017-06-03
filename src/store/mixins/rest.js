@@ -38,7 +38,7 @@ export default (urlPath)=>{
       fetchOne ({ commit }, payload = {}) {
         const id = payload.id, options = payload.options
         const promise = Axios.get(`${urlPath}/${id}/`, options)
-        commit(events.start, promise)
+        commit('start', promise)
         promise.then(function(res){
           commit('complete', res)
         }, function(res){

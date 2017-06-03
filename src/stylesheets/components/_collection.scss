@@ -1,0 +1,190 @@
+#collection-page{
+  .mint-navbar{
+    padding-bottom:3px;
+    margin-bottom:10px;
+    height:35px;
+    .mint-tab-item{
+      padding: 12px 0;
+    }
+  }
+  .collections-list{
+    height:calc(100% - 44px)!important;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+    .collection-item{
+      margin-bottom:10px;
+      .banner-item{
+        display: block;
+        position: relative;
+        &:after{
+          content:"";
+          display:block;
+          @include triangle(15px,#fff,up);
+          position: absolute;
+          bottom:0;
+          left:50%;
+          @include transform(translateX(-50%));
+        }
+        .banner{
+          width:100%;
+          height:170px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .title{
+          position: absolute;
+          @include transform(translate(-50%, -50%));
+          top:50%;
+          left:50%;
+          background: #fff;
+          padding:5px;
+          .title-inner{
+            text-align: center;
+            border:1px solid $primary-color;
+            padding:15px;
+            font-size:15px;
+            font-weight: 500;
+            color:#333333;
+          }
+        }
+      }
+      .product-list{
+        height:140px;
+        background-color: #fff;
+        overflow-x: auto;
+        >.product-list-inner{
+          padding:15px;
+          height:140px;
+          white-space: nowrap;
+        }
+      }
+      .product-item{
+        display: inline-block;
+        margin-right:15px;
+        &:last-child{
+          margin-right:0;
+        }
+        >.image{
+          width:80px;
+          height:80px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        >.title{
+          text-align: center;
+          font-size:12px;
+          width:80px;
+          @include ellipsis($width:80px);
+        }
+        >.price{
+          text-align: center;
+          color:$primary-color;
+          font-size:12px;
+          width:80px;
+          -webkit-font-smoothing: antialiased;
+        }
+      }
+    }
+  }
+}
+
+
+#collection-detail-page{
+  height:100%!important;
+  padding-top:200px;
+  overflow:auto;
+  -webkit-overflow-scrolling: touch;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: auto 200px;
+  .collection-content{
+    background-color: #fff;
+    padding-top:15px;
+    >.title{
+      text-align: center;
+      margin-bottom:15px;
+    }
+    >.author{
+      text-align: center;
+      color:$primary-color;
+      margin-bottom:15px;
+      font-size:12px;
+      -webkit-font-smoothing: antialiased;
+    }
+    >.item{
+      .image{
+        width:100%;
+      }
+      .text{
+        padding:15px 5px;
+        font-size:14px;
+      }
+    }
+  }
+  .related-title{
+    position: relative;
+    text-align: center;
+    padding-bottom:10px;
+    &:before{
+      content:"";
+      width:90%;
+      height:1px;
+      background-color: $primary-color;
+      position: absolute;
+      z-index:0;
+      left:50%;
+      @include transform(translateX(-50%));
+      bottom:calc(50% + 3px);
+    }
+    &:after{
+      content:"相关商品";
+      font-size:14px;
+      color:$primary-color;
+      background-color: #fff;
+      z-index:1;
+      position: relative;
+      padding:0 10px;
+    }
+  }
+  .related-product-list{
+    padding:10px 5px 5px 5px;
+    background-color: #f8f8f8;
+    @include clearfix();
+    >.product-item{
+      width:calc(50% - 2.5px);
+      float: left;
+      margin-right:5px;
+      background-color: #fff;
+      height:200px;
+      margin-bottom:5px;
+      padding:0 10px;
+      text-align: left;
+      &:nth-child(2n){
+        margin-right:0;
+      }
+
+      >.image{
+        width:100%;
+        height:150px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: contain;
+      }
+      >.title{
+        margin-top:5px;
+        font-size:12px;
+        width:100%;
+        @include ellipsis($width:100%);
+      }
+      >.price{
+        color:$primary-color;
+        font-size:12px;
+        width:100%;
+        -webkit-font-smoothing: antialiased;
+        margin-top:5px;
+      }
+    }
+  }
+}

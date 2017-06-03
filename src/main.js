@@ -5,6 +5,8 @@ Vue.use(Mint)
 /* 自定义全局组件*/
 import VueMasonryPlugin from 'vue-masonry';
 Vue.use(VueMasonryPlugin)
+import VueWaypoint from 'vue-waypoint'
+Vue.use(VueWaypoint)
 
 import Page from '@/container/Page'
 Vue.component('Page', Page)

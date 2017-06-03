@@ -6,6 +6,7 @@ import store from '../store'
 import HomePage from '@/views/HomePage'
 import CategoryPage from '@/views/CategoryPage'
 import CollectionPage from '@/views/CollectionPage'
+import CollectionDetailPage from '@/views/CollectionDetailPage'
 import SearchPage from '@/views/SearchPage'
 import AccountPage from '@/views/AccountPage'
 import ProductPage from '@/views/ProductPage'
@@ -46,7 +47,15 @@ export default hooks(new Router({
       name: 'collection',
       component: CollectionPage,
       meta:{
-        noPageAnimation:true
+        //noPageAnimation:true
+      }
+    },
+    {
+      path: '/collection/:id',
+      name: 'collection_detail',
+      component: CollectionDetailPage,
+      meta:{
+        hideTab:true
       }
     },
     {
