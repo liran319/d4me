@@ -7,6 +7,9 @@ export default function (router, $store) {
 
   router.beforeEach(function (to, from, next) {
     if (!(to.meta.noPageAnimation || from.meta.noPageAnimation)) {
+      if(to.meta.sub&&prevRoutes.length==0){
+        prevRoutes.push(to.meta.sub);
+      }
       if (to.name === prevRoutes[ prevRoutes.length - 1 ]) {
         $store.commit('transition/setTransition', 'page-out');
         prevRoutes.pop();

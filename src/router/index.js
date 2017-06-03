@@ -55,6 +55,7 @@ export default hooks(new Router({
       name: 'collection_detail',
       component: CollectionDetailPage,
       meta:{
+        sub:"collection",
         hideTab:true
       }
     },
@@ -71,7 +72,11 @@ export default hooks(new Router({
     {
       path: '/product/:id',
       name: 'product/detail',
-      component: ProductDetailPage
+      component: ProductDetailPage,
+      meta:{
+        sub:"product",
+        hideTab:true
+      }
     },
     {
       path: '/cart',

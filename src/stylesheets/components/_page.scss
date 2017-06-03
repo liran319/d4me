@@ -22,8 +22,22 @@
 
   .mint-header{
     background-color: transparent;
+    @include transition(all .2s);
     .mint-button-icon{
       color:#666;
+    }
+    .mint-header-title{
+      @include transition(all .2s);
+      opacity:0;
+      color:#666;
+    }
+  }
+  &.showTitle{
+    .mint-header{
+      background-color: #fff;
+      .mint-header-title{
+        opacity:1;
+      }
     }
   }
 }
