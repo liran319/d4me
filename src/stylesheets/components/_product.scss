@@ -1,135 +1,190 @@
-#home-page,#product-page{
-  .product-list{
-    padding:5px;
-    overflow:auto;
+#home-page, #product-page {
+  .product-list {
+    padding: 5px;
+    overflow: auto;
     -webkit-overflow-scrolling: touch;
-    height:calc(100% - 44px)!important;
-    .product-item{
-      position:relative;
+    height: calc(100% - 44px) !important;
+    .product-item {
+      position: relative;
       text-align: center;
-      margin:5px;
-      width:calc(50% - 15px);
+      margin: 5px;
+      width: calc(50% - 15px);
       background-color: #fff;
-      >a>img{
-        width:100%;
+      > a > img {
+        width: 100%;
       }
-      >.brand-title{
-        padding-top:10px;
+      > .brand-title {
+        padding-top: 10px;
         font-size: 14px;
-        color:#333;
-        padding-bottom:5px;
+        color: #333;
+        padding-bottom: 5px;
       }
-      >.title{
+      > .title {
         font-size: 12px;
-        padding-bottom:10px;
-        color:#666;
+        padding-bottom: 10px;
+        color: #666;
       }
-      >.price{
+      > .price {
         font-size: 12px;
-        color:$primary-color;
-        padding-bottom:10px;
+        color: $primary-color;
+        padding-bottom: 10px;
         -webkit-font-smoothing: antialiased;
       }
     }
   }
 }
 
-
-#product-detail-page{
-  height:100%!important;
-  padding-top:300px;
-  overflow:auto;
+#product-detail-page {
+  height: 100% !important;
+  padding-top: 300px;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
-  .product-content{
-    background-color: #fff;
-    padding-top:15px;
-    >.title{
-      text-align: center;
-      margin-bottom:15px;
-    }
-    >.author{
-      text-align: center;
-      color:$primary-color;
-      margin-bottom:15px;
-      font-size:12px;
-      -webkit-font-smoothing: antialiased;
-    }
-    >.item{
-      .image{
-        width:100%;
+  .product-content {
+    background-color: #f8f8f8;
+    .product-title {
+      padding: 15px 10px 10px 10px;
+      text-align: left;
+      background-color: #fff;
+      margin-bottom: 10px;
+      > .title {
+        margin-bottom: 10px;
       }
-      .text{
-        padding:15px 5px;
-        font-size:14px;
+      > .price {
+        color: $primary-color;
+        margin-bottom: 15px;
+        font-size: 16px;
       }
+      > .variants {
+        font-size: 14px;
+        -webkit-font-smoothing: antialiased;
+      }
+    }
+    .mint-navbar {
+      padding-bottom: 2px;
+      border-bottom: 1px solid #DADBDB;
+    }
+    > .content {
+      background-color: #fff;
+      padding: 15px;
+      > .item {
+        > img {
+          width: 100%;
+        }
+        margin-bottom:10px;
+      }
+      margin-bottom:15px;
     }
   }
 
-  .related-title{
+  .related-title {
     position: relative;
     text-align: center;
-    padding-bottom:10px;
-    &:before{
-      content:"";
-      width:90%;
-      height:1px;
+    background-color: #fff;
+    padding-top:10px;
+    padding-bottom: 10px;
+    &:before {
+      content: "";
+      width: 50%;
+      height: 1px;
       background-color: $primary-color;
       position: absolute;
-      z-index:0;
-      left:50%;
+      z-index: 0;
+      left: 50%;
       @include transform(translateX(-50%));
-      bottom:calc(50% + 3px);
+      bottom: calc(50% - 1px);
     }
-    &:after{
-      content:"相关商品推荐";
-      font-size:14px;
-      color:$primary-color;
+    &:after {
+      content: "相关商品推荐";
+      font-size: 14px;
+      color: #333;
       background-color: #fff;
-      z-index:1;
+      z-index: 1;
       position: relative;
-      padding:0 10px;
+      padding: 0 10px;
     }
   }
 
-  .related-product-list{
-    padding:10px 5px 5px 5px;
-    background-color: #f8f8f8;
+  .related-product-list {
+    padding: 0 5px 5px 5px;
+    background-color: #fff;
     @include clearfix();
-    >.product-item{
-      width:calc(50% - 2.5px);
-      float: left;
-      margin-right:5px;
+    > .product-item {
+      border:1px solid #DDDDDD;
+      position: relative;
+      text-align: center;
+      margin: 5px;
+      width: calc(50% - 15px);
       background-color: #fff;
-      height:200px;
-      margin-bottom:5px;
-      padding:0 10px;
-      text-align: left;
-      &:nth-child(2n){
-        margin-right:0;
+      >a{
+        display: block;
+        >.image {
+          width: 100%;
+        }
       }
-
-      >.image{
-        width:100%;
-        height:150px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: contain;
+      .title {
+        margin-top: 5px;
+        font-size: 12px;
+        width: 100%;
+        @include ellipsis($width: 80%);
       }
-      >.title{
-        margin-top:5px;
-        font-size:12px;
-        width:100%;
-        @include ellipsis($width:100%);
-      }
-      >.price{
-        color:$primary-color;
-        font-size:12px;
-        width:100%;
+      .price {
+        color: $primary-color;
+        font-size: 12px;
+        width: 100%;
         -webkit-font-smoothing: antialiased;
-        margin-top:5px;
+        margin-top: 5px;
+      }
+    }
+  }
+  footer{
+    border-top:1px solid #DDDDDD;
+    position: fixed;
+    bottom:0;
+    z-index: 9999;
+    background-color: #fff;
+    height:50px;
+    width:100%;
+    @include clearfix();
+    .left{
+      height:50px;
+      float:left;
+    }
+    .right{
+      height:50px;
+      white-space: nowrap;
+      float:right;
+    }
+    .button{
+      display: inline-block;
+      font-size:14px;
+      &.icon{
+        margin-left:10px;
+        padding:10px;
+        text-align: center;
+        >div{
+          width:16px;
+          height:16px;
+        }
+        >span{
+          color:#333;
+          display: block;
+          font-size:12px;
+        }
+      }
+      &.black{
+        background-color: #221814;
+        color:#fff;
+        padding:0 20px;
+        line-height:50px;
+      }
+      &.gold{
+        color:#fff;
+        padding:0 18px;
+        line-height:50px;
+        @include linear-gradient(to right, #F4C9CF, #D2A958);
       }
     }
   }

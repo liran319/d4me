@@ -47,7 +47,7 @@ export default hooks(new Router({
       name: 'collection',
       component: CollectionPage,
       meta:{
-        //noPageAnimation:true
+        noPageAnimation:true
       }
     },
     {
@@ -69,7 +69,7 @@ export default hooks(new Router({
       name: 'product',
       component: ProductPage,
       meta:{
-        hideTab:true
+      hideTab:true
       }
     },
     {
