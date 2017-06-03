@@ -10,7 +10,7 @@
       margin:5px;
       width:calc(50% - 15px);
       background-color: #fff;
-      >img{
+      >a>img{
         width:100%;
       }
       >.brand-title{
@@ -29,6 +29,107 @@
         color:$primary-color;
         padding-bottom:10px;
         -webkit-font-smoothing: antialiased;
+      }
+    }
+  }
+}
+
+
+#product-detail-page{
+  height:100%!important;
+  padding-top:300px;
+  overflow:auto;
+  -webkit-overflow-scrolling: touch;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  .product-content{
+    background-color: #fff;
+    padding-top:15px;
+    >.title{
+      text-align: center;
+      margin-bottom:15px;
+    }
+    >.author{
+      text-align: center;
+      color:$primary-color;
+      margin-bottom:15px;
+      font-size:12px;
+      -webkit-font-smoothing: antialiased;
+    }
+    >.item{
+      .image{
+        width:100%;
+      }
+      .text{
+        padding:15px 5px;
+        font-size:14px;
+      }
+    }
+  }
+
+  .related-title{
+    position: relative;
+    text-align: center;
+    padding-bottom:10px;
+    &:before{
+      content:"";
+      width:90%;
+      height:1px;
+      background-color: $primary-color;
+      position: absolute;
+      z-index:0;
+      left:50%;
+      @include transform(translateX(-50%));
+      bottom:calc(50% + 3px);
+    }
+    &:after{
+      content:"相关商品推荐";
+      font-size:14px;
+      color:$primary-color;
+      background-color: #fff;
+      z-index:1;
+      position: relative;
+      padding:0 10px;
+    }
+  }
+
+  .related-product-list{
+    padding:10px 5px 5px 5px;
+    background-color: #f8f8f8;
+    @include clearfix();
+    >.product-item{
+      width:calc(50% - 2.5px);
+      float: left;
+      margin-right:5px;
+      background-color: #fff;
+      height:200px;
+      margin-bottom:5px;
+      padding:0 10px;
+      text-align: left;
+      &:nth-child(2n){
+        margin-right:0;
+      }
+
+      >.image{
+        width:100%;
+        height:150px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: contain;
+      }
+      >.title{
+        margin-top:5px;
+        font-size:12px;
+        width:100%;
+        @include ellipsis($width:100%);
+      }
+      >.price{
+        color:$primary-color;
+        font-size:12px;
+        width:100%;
+        -webkit-font-smoothing: antialiased;
+        margin-top:5px;
       }
     }
   }

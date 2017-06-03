@@ -6,6 +6,7 @@ import { define } from '@/utils/factory'
 import rest from '@/store/mixins/rest'
 
 const products = define(rest('/products'))
+const product = define(rest('/products'))
 const articles = define(rest('/articles'))
 const article = define(rest('/articles'))
 const collections = define(rest('/collections'))
@@ -42,6 +43,7 @@ const store = new Vuex.Store({
   modules: {
     transition,
     products,
+    product,
     banners,
     collections,
     article,
