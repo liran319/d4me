@@ -1,11 +1,7 @@
 <template>
   <Page id="collection-page">
     <mt-navbar v-model="selected">
-      <mt-tab-item id="all">全部</mt-tab-item>
-      <mt-tab-item id="发现">发现</mt-tab-item>
-      <mt-tab-item id="风尚">风尚</mt-tab-item>
-      <mt-tab-item id="活动">活动</mt-tab-item>
-      <mt-tab-item id="LAB">LAB</mt-tab-item>
+      <mt-tab-item :id="item[1]" v-for="item,index in tabs" :key="index">{{item[0]}}</mt-tab-item>
     </mt-navbar>
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
@@ -42,6 +38,12 @@
       }
     },
     computed: {
+      global(){
+        return this.$store.state.users.global||{}
+      },
+      tabs(){
+        return this.global.article_categories||[]
+      },
       pending(){
         return this.$store.state.articles.pending
       },

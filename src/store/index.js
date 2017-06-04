@@ -19,7 +19,6 @@ const messages = define(rest('/messages'))
 const mixes = define(rest('/mixes'))
 const orders = define(rest('/orders'))
 const rewards = define(rest('/rewards'))
-const users = define(rest('/users'))
 
 import createLogger from 'vuex/dist/logger'
 
@@ -34,6 +33,7 @@ import * as mutations from './mutations'
 
 // modules
 import transition from '@/store/modules/transition'
+import users from '@/store/modules/users'
 
 const store = new Vuex.Store({
   state: {},
