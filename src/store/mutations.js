@@ -1,1 +1,3 @@
-export const MUTATION_TYPE_NAME = (state, payload) => {}
+export const set_category = (state, payload) => {
+  state.category = payload.category
+}

@@ -36,7 +36,9 @@ import users from '@/store/modules/users'
 import products from '@/store/modules/products'
 
 const store = new Vuex.Store({
-  state: {},
+  state: {
+    category:null
+  },
   actions,
   mutations,
   plugins,

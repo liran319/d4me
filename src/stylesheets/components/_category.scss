@@ -1,5 +1,5 @@
 #category-page{
-
+  position: relative;
 }
 
 .category-list{
@@ -22,13 +22,40 @@
       bottom:0;
       left:20px;
     }
-    &:active{
+    &:active,&.active{
       background-color:#f8f8f8;
+    }
+    >span{
+      vertical-align: middle;
     }
     >img{
       width:30px;
       height:30px;
       margin-right:10px;
+      vertical-align: middle;
+    }
+  }
+  &.sub{
+    top:0;
+    width:50%;
+    position: absolute;
+    left:100%;
+    @include transition(left .2s);
+    &.active{
+      left:50%;
+    }
+    .category-item{
+      background-color: #f8f8f8;
+      height:40px;
+      line-height:40px;
+      font-size:13px;
+      >img{
+        width:20px;
+        height:20px;
+      }
+      &:active{
+        background-color: darken(#f8f8f8, 20%);
+      }
     }
   }
 }

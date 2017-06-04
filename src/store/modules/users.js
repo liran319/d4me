@@ -40,7 +40,6 @@ export default {
     success: successRequest,
     error: errorRequest,
     global_complete(state, payload){
-      console.log(payload.data)
       state.global = payload.data
       state.ready = true
     },

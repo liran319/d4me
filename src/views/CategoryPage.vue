@@ -1,7 +1,13 @@
 <template>
   <Page id="category-page">
       <div class="category-list">
-        <div class="category-item main" v-for="category,index in categories" :key="index" @click="onClickCategory(category)">
+        <div :class="{'category-item':true, active:mainCategory&&mainCategory==category[0]}" v-for="category,index in categories" :key="index" @click="onClickCategory(category)">
+          <img :src="category[1]"/>
+          <span>{{category[0]}}</span>
+        </div>
+      </div>
+      <div :class="{'sub category-list':true,active:mainCategory}">
+        <div class="category-item" v-for="category,index in subcategories[mainCategory]" :key="index" @click="onClickSubCategory(category)">
           <img :src="category[1]"/>
           <span>{{category[0]}}</span>
         </div>
@@ -11,11 +17,6 @@
 
 <script>
   export default {
-    data(){
-      return {
-        mainCategory:null
-      }
-    },
     computed: {
       global(){
         return this.$store.state.users.global||{}
@@ -25,14 +26,21 @@
       },
       subcategories(){
         return this.global.subcategories
+      },
+      mainCategory(){
+        return this.$store.state.category
       }
     },
     methods:{
       onClickCategory(category){
         if(this.subcategories[category[0]]){
-          this.mainCategory = category[0]
-          this.openSubCategory()
+          this.$store.commit('set_category',{
+            category:category[0]
+          })
         }else{
+          this.$store.commit('set_category',{
+            category:null
+          })
           this.$router.push({
             path:'/product',
             query:{
@@ -41,11 +49,13 @@
           })
         }
       },
-      openSubCategory(){
-
-      },
-      closeSubCategory(){
-
+      onClickSubCategory(category){
+        this.$router.push({
+          path:'/product',
+          query:{
+            category:category[0]=="全部配饰"?"配饰":category[0]
+          }
+        })
       }
     }
   }
