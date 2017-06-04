@@ -49,6 +49,9 @@
       height:40px;
       line-height:40px;
       font-size:13px;
+      &:after{
+        display:none;
+      }
       >img{
         width:20px;
         height:20px;
