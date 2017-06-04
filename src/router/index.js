@@ -98,7 +98,8 @@ export default hooks(new Router({
       name: 'account',
       component: AccountPage,
       meta:{
-        noPageAnimation:true
+        noPageAnimation:true,
+        hideDownload:true
       }
     },
     {

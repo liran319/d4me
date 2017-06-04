@@ -20,7 +20,7 @@
     -webkit-overflow-scrolling: touch;  // scroll effect optimize in safari
   }
 
-  .mint-header{
+  .mint-header:not(.fixed){
     background-color: transparent;
     @include transition(all .2s);
     .mint-button-icon{

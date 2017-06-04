@@ -31,6 +31,30 @@
 .icon-unlike-o{
   background-image: url('../assets/unlike-o@2x.png');
 }
+.icon-unpaid{
+  background-image: url('../assets/unpaid@2x.png');
+}
+.icon-received{
+  background-image: url('../assets/received@2x.png');
+}
+.icon-unreceived{
+  background-image: url('../assets/unreceived@2x.png');
+}
+.icon-voucher{
+  background-image: url('../assets/voucher@2x.png');
+}
+.icon-address{
+  background-image: url('../assets/address@2x.png');
+}
+.icon-contact{
+  background-image: url('../assets/contact@2x.png');
+}
+.icon-download{
+  background-image: url('../assets/download@2x.png');
+}
+.icon-favorite{
+  background-image: url('../assets/favorite@2x.png');
+}
 
 .is-selected{
   .icon-home{
@@ -47,5 +71,8 @@
   }
   .icon-account{
     background-image: url('../assets/account_selected@2x.png');
+  }
+  .icon-contact{
+    background-image: url('../assets/contact_selected@2x.png');
   }
 }

@@ -1,0 +1,82 @@
+#account-page {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  height: calc(100% - 40px) !important;
+  padding-top:40px;
+  .mint-header {
+    background-color: #fff;
+    .mint-button-icon {
+      color: #666;
+    }
+    .mint-header-title {
+      color: #666;
+    }
+  }
+  .account-header {
+    background-color: #fff;
+    text-align: center;
+    padding-bottom: 10px;
+    .avatar {
+      margin-top: 20px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: #f8f8f8;
+      display: inline-block;
+    }
+    .avatar-name {
+      margin: 10px 0;
+    }
+  }
+  .orders {
+    background-color: #fff;
+    margin-top: 10px;
+    .header {
+      padding: 15px;
+      border-bottom: 2px solid #ddd;
+      @include display(flex);
+      @include justify-content(space-between);
+      .right {
+        > div {
+          color: #999999;
+          line-height: 18px;
+        }
+        font-size: 12px;
+      }
+    }
+    .content {
+      @include display(flex);
+      > .item {
+        text-align: center;
+        font-size: 13px;
+        @include flex(1);
+        padding: 15px 0;
+        > .icon {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  .expand {
+    margin-top: 10px;
+    background-color: #fff;
+    position: relative;
+    @include clearfix();
+    > .item {
+      position: relative;
+      text-align: center;
+      font-size: 13px;
+      width: 25%;
+      height:0;
+      padding-bottom:25%;
+      display: block;
+      float:left;
+      box-shadow: 0 0 0 1px #f8f8f8;
+      > .icon {
+        margin-top:15px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
