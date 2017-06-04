@@ -1,6 +1,6 @@
 <template>
   <Page id="home-page">
-    <div class="mint-searchbar">
+    <div class="mint-searchbar" @click="goSearchPage">
       <div class="mint-searchbar-inner">
         <i class="mintui mintui-search"></i>
         <input type="search" placeholder="搜索" class="mint-searchbar-core">
@@ -31,6 +31,11 @@
       },
       products(){
         return this.$store.state.products.data.products || []
+      }
+    },
+    methods:{
+      goSearchPage(){
+        this.$router.push('/search')
       }
     },
     mounted(){

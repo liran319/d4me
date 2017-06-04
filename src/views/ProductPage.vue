@@ -37,7 +37,21 @@
       }
     },
     mounted(){
-      this.$store.dispatch('products/fetch')
+      if(this.$route.query.search){
+        this.$store.dispatch('products/search',{
+          options:{
+            params: {
+              q:this.$route.query.search
+            }
+          }
+        })
+      }else{
+        this.$store.dispatch('products/fetch',{
+          options:{
+            params: this.$route.query
+          }
+        })
+      }
     },
     beforeDestroy(){
       this.$store.commit('products/reset')

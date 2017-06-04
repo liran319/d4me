@@ -5,7 +5,6 @@ Vue.use(Vuex)
 import { define } from '@/utils/factory'
 import rest from '@/store/mixins/rest'
 
-const products = define(rest('/products'))
 const product = define(rest('/products'))
 const articles = define(rest('/articles'))
 const article = define(rest('/articles'))
@@ -34,6 +33,7 @@ import * as mutations from './mutations'
 // modules
 import transition from '@/store/modules/transition'
 import users from '@/store/modules/users'
+import products from '@/store/modules/products'
 
 const store = new Vuex.Store({
   state: {},

@@ -39,7 +39,7 @@ export default hooks(new Router({
       name: 'category',
       component: CategoryPage,
       meta:{
-        noPageAnimation:true
+        hideDownload:true
       }
     },
     {
@@ -62,7 +62,11 @@ export default hooks(new Router({
     {
       path: '/search',
       name: 'search',
-      component: SearchPage
+      component: SearchPage,
+      meta:{
+        sub:'home',
+        hideTab:true
+      }
     },
     {
       path: '/product',

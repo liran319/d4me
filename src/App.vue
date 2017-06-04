@@ -4,7 +4,7 @@
       <transition :name="transitionName" @afterLeave="clearTransition">
         <router-view></router-view>
       </transition>
-      <img v-if="!$route.meta.hideTab" id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload"/>
+      <img v-if="!$route.meta.hideTab&&!$route.meta.hideDownload" id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload"/>
       <mt-tabbar v-if="!$route.meta.hideTab" :value="currentTab" @input="onTabChange">
         <mt-tab-item id="home">
           <div slot="icon" class="icon icon-home"></div>

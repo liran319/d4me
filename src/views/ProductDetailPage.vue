@@ -87,7 +87,12 @@
       this.fetch()
     },
     beforeDestroy(){
-//      this.$store.commit('articles/reset')
+      this.$store.commit('product/reset')
+    },
+    watch:{
+      $route(){
+        this.fetch()
+      }
     }
   }
 </script>
