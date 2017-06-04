@@ -1,5 +1,5 @@
 <template>
-  <Page id="product-detail-page" :class="{showTitle:showTitle}" :style="{backgroundImage:'url('+product.image+')'}">
+  <Page id="product-detail-page" :class="{showTitle:showTitle}" :style="{backgroundImage:'url('+product.image+')'}" :key="$route.params.id">
     <mt-header fixed :title="product.title">
       <div slot="left">
         <mt-button icon="back" @click="goBack"></mt-button>
