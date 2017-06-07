@@ -901,6 +901,9 @@
   flex: 1;
   height: 28px;
   padding: 4px 6px;
+  input{
+    @include user-select(text);
+  }
 }
 .mint-searchbar-inner .mintui-search {
   font-size: 14px;
@@ -916,8 +919,10 @@
   height: 100%;
   outline: 0;
   background-color: #F8F8F8;
+  color:#000;
   @include placeholder(){
     text-align: center;
+    color:#999999;
   }
 }
 .mint-searchbar-cancel {

@@ -3,9 +3,8 @@
     <div class="mint-searchbar" @click="goSearchPage">
       <div class="mint-searchbar-inner">
         <i class="mintui mintui-search"></i>
-        <input type="search" placeholder="搜索" class="mint-searchbar-core">
+        <div class="mint-searchbar-core">搜索</div>
       </div>
-      <a class="mint-searchbar-cancel" style="display: none;">取消</a>
     </div>
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
