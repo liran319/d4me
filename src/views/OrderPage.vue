@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+  <Page id="order-page">
+
+  </Page>
 </template>
 
 <script>

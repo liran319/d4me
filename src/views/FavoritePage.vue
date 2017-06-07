@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+  <Page id="favorite-page">
+
+  </Page>
 </template>
 
 <script>

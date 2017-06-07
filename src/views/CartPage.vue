@@ -1,6 +1,6 @@
 <template>
   <Page id="cart-page">
-    cart
+
   </Page>
 </template>
 

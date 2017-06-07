@@ -1,5 +1,5 @@
 <template>
-  <Page id="order-detail-page">
+  <Page id="address-page">
 
   </Page>
 </template>

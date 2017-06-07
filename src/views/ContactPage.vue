@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+  <Page id="contact-page">
+
+  </Page>
 </template>
 
 <script>

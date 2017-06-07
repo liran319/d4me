@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+  <Page id="newcome-page">
+
+  </Page>
 </template>
 
 <script>

@@ -18,6 +18,7 @@ import FavoritePage from '@/views/FavoritePage'
 import VoucherPage from '@/views/VoucherPage'
 import ContactPage from '@/views/ContactPage'
 import NewComePage from '@/views/NewComePage'
+import AddressPage from '@/views/AddressPage'
 
 Vue.use(Router)
 
@@ -90,7 +91,7 @@ export default hooks(new Router({
       name: 'cart',
       component: CartPage,
       meta:{
-        noPageAnimation:true
+        sub:'account'
       }
     },
     {
@@ -104,7 +105,10 @@ export default hooks(new Router({
     {
       path: '/order',
       name: 'order',
-      component: OrderPage
+      component: OrderPage,
+      meta:{
+        sub:'account'
+      }
     },
     {
       path: '/order/:id',
@@ -115,24 +119,44 @@ export default hooks(new Router({
       }
     },
     {
+      path: '/address',
+      name: 'address',
+      component: AddressPage,
+      meta:{
+        sub:'account'
+      }
+    },
+    {
       path: '/favorite',
       name: 'favorite',
-      component: FavoritePage
+      component: FavoritePage,
+      meta:{
+        sub:'account'
+      }
     },
     {
       path: '/voucher',
       name: 'voucher',
-      component: VoucherPage
+      component: VoucherPage,
+      meta:{
+        sub:'account'
+      }
     },
     {
       path: '/contact',
       name: 'contact',
-      component: ContactPage
+      component: ContactPage,
+      meta:{
+        sub:'account'
+      }
     },
     {
       path: '/newcome',
       name: 'newcome',
-      component: NewComePage
+      component: NewComePage,
+      meta:{
+        sub:'account'
+      }
     }
   ]
 }), store);

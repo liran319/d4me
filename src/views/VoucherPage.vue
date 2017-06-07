@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+  <Page id="voucher-page">
+
+  </Page>
 </template>
 
 <script>
