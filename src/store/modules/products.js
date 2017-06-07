@@ -18,7 +18,7 @@ const completeMoreRequest = function (state, payload) {
   var res = payload.data
   var key = _.keys(res)[0]
   if(res[key]&&res[key].length){
-    res[key] = (state.data&&state.data.results?state.data[key]:[]).concat(res[key])
+    res[key] = (state.data&&state.data[key]?state.data[key]:[]).concat(res[key])
     state.data = res
     state.hasMore = false
   }else{
