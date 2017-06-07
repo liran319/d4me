@@ -91,6 +91,8 @@ export default hooks(new Router({
       name: 'cart',
       component: CartPage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:'account'
       }
     },
@@ -107,6 +109,8 @@ export default hooks(new Router({
       name: 'order',
       component: OrderPage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:'account'
       }
     },
@@ -115,6 +119,8 @@ export default hooks(new Router({
       name: 'order/detail',
       component: OrderDetailPage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:"order"
       }
     },
@@ -123,6 +129,8 @@ export default hooks(new Router({
       name: 'address',
       component: AddressPage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:'account'
       }
     },
@@ -131,6 +139,8 @@ export default hooks(new Router({
       name: 'favorite',
       component: FavoritePage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:'account'
       }
     },
@@ -139,6 +149,8 @@ export default hooks(new Router({
       name: 'voucher',
       component: VoucherPage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:'account'
       }
     },
@@ -147,6 +159,8 @@ export default hooks(new Router({
       name: 'contact',
       component: ContactPage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:'account'
       }
     },
@@ -155,6 +169,8 @@ export default hooks(new Router({
       name: 'newcome',
       component: NewComePage,
       meta:{
+        bottom:0,
+        hideTab:true,
         sub:'account'
       }
     }

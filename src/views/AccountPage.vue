@@ -4,6 +4,7 @@
     <div class="account-header">
       <div class="avatar"></div>
       <div class="avatar-name">D4ME</div>
+      <div class="button" @click="go('/newcome')">新人专享</div>
     </div>
     <div class="orders">
       <div class="header">
