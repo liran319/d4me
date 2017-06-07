@@ -11,6 +11,19 @@ const completeRequest = function (state, payload) {
   state.data = payload.data
 }
 
+const completeMoreRequest = function (state, payload) {
+  state.pending = false
+  var res = payload.data
+  var key = _.keys(res)[0]
+  if(res[key]&&res[key].length){
+    res[key] = (state.data&&state.data.results?state.data[key]:[]).concat(res[key])
+    state.hasMore = false
+    state.data = res
+  }else{
+    state.hasMore = true
+  }
+}
+
 const errorRequest = function (state, payload) {
   state.pending = false
   state.error = _.omit(payload.data, ['errors','non_field_errors','error'])
@@ -21,6 +34,7 @@ export default (urlPath)=>{
     state: {
       error: null,
       pending: false,
+      hasMore: false,
       data: {},
       list:{}
     },
@@ -32,6 +46,7 @@ export default (urlPath)=>{
       },
       start: startRequest,
       complete: completeRequest,
+      more_complete: completeMoreRequest,
       error: errorRequest
     },
     actions: {
@@ -41,6 +56,16 @@ export default (urlPath)=>{
         commit('start', promise)
         promise.then(function(res){
           commit('complete', res)
+        }, function(res){
+          commit('error', res.response)
+        })
+        return promise
+      },
+      fetchMore ({ commit }, { options }) {
+        const promise = Axios.get(`${urlPath}/`, options)
+        commit('start', promise)
+        promise.then(function(res){
+          commit('more_complete', res)
         }, function(res){
           commit('error', res.response)
         })

@@ -7,7 +7,10 @@
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
-    <div class="collections-list">
+    <div class="collections-list"
+         v-infinite-scroll="fetchMore"
+         infinite-scroll-disabled="hasMore"
+         infinite-scroll-distance="10">
       <div class="collection-item" v-for="item in articles" :key="item.id">
         <router-link class="banner-item" :to="'/collection/'+item.id">
           <div class="banner" :style="{backgroundImage:'url('+item.image+')'}" :alt="item.title"/>
@@ -32,9 +35,12 @@
 </template>
 
 <script>
+  import page from '@/mixins/page'
   export default {
+    mixins:[page],
     data(){
       return {
+        storeName:'articles',
         selected:"all"
       }
     },
@@ -45,33 +51,16 @@
       tabs(){
         return this.global.article_categories||[]
       },
-      pending(){
-        return this.$store.state.articles.pending
-      },
       articles(){
         return this.$store.state.articles.data.articles || []
       }
-    },
-    methods:{
-      fetch(){
-        this.$store.dispatch('articles/fetch',{
-          options:{
-            params:{
-              category: this.selected=='all'?undefined:this.selected
-            }
-          }
-        })
-      }
-    },
-    mounted(){
-      this.fetch()
     },
     beforeDestroy(){
       this.$store.commit('articles/reset')
     },
     watch:{
       selected(){
-        this.fetch()
+        this.fetchData()
       }
     }
   }

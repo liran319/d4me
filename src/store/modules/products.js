@@ -2,6 +2,7 @@ import Axios from '@/utils/axios'
 import _ from 'lodash'
 
 const startRequest = function (state, payload) {
+  state.hasMore = true
   state.pending = true
   state.error = null
 }
@@ -9,6 +10,20 @@ const startRequest = function (state, payload) {
 const completeRequest = function (state, payload) {
   state.pending = false
   state.data = payload.data
+  state.hasMore = false
+}
+
+const completeMoreRequest = function (state, payload) {
+  state.pending = false
+  var res = payload.data
+  var key = _.keys(res)[0]
+  if(res[key]&&res[key].length){
+    res[key] = (state.data&&state.data.results?state.data[key]:[]).concat(res[key])
+    state.data = res
+    state.hasMore = false
+  }else{
+    state.hasMore = true
+  }
 }
 
 const errorRequest = function (state, payload) {
@@ -21,6 +36,7 @@ export default {
   state: {
     error: null,
     pending: false,
+    hasMore: false,
     data: {},
     list:{}
   },
@@ -32,12 +48,12 @@ export default {
     },
     start: startRequest,
     complete: completeRequest,
+    more_complete: completeMoreRequest,
     error: errorRequest
   },
   actions: {
-    search ({ commit }, payload = {}) {
-      const options = payload.options
-      const promise = Axios.get(`/products/search/`, options)
+    fetch ({ commit }, payload = {}) {
+      const promise = Axios.get(payload.search?'/products/search/':'/products/', payload.options)
       commit('start', promise)
       promise.then(function(res){
         commit('complete', res)
@@ -46,11 +62,11 @@ export default {
       })
       return promise
     },
-    fetch ({ commit }, payload = {}) {
-      const promise = Axios.get(`/products/`, payload.options)
+    fetchMore ({ commit }, { options, search }) {
+      const promise = Axios.get(search?'/products/search/':'/products/', options)
       commit('start', promise)
       promise.then(function(res){
-        commit('complete', res)
+        commit('more_complete', res)
       }, function(res){
         commit('error', res.response)
       })

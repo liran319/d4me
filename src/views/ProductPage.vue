@@ -8,7 +8,10 @@
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
-    <div class="product-list" v-masonry transition-duration="0" item-selector=".product-item">
+    <div class="product-list" v-masonry transition-duration="0" item-selector=".product-item"
+         v-infinite-scroll="fetchMore"
+         infinite-scroll-disabled="hasMore"
+         infinite-scroll-distance="10">
       <div v-masonry-tile column-width=".product-item" class="product-item" v-for="item in products" :key="item.id">
         <router-link :to="'/product/'+item.id">
           <img :src="item.image" :alt="item.title"/>
@@ -22,9 +25,12 @@
 </template>
 
 <script>
+  import page from '@/mixins/page'
   export default {
+    mixins:[page],
     data(){
       return {
+        storeName:'products',
         selected:'default'
       }
     },
@@ -41,23 +47,53 @@
     },
     methods:{
       fetchProduct(){
+        this.page = 1;
         var params;
         if(this.$route.query.search){
           params = Object.assign({
+            page:this.page,
             q:this.$route.query.search
           })
           if(this.selected!='default')params.order = this.selected
 
-          this.$store.dispatch('products/search',{
+          this.$store.dispatch('products/fetch',{
+            search:true,
             options:{
               params: params
             }
           })
         }else{
-          params = Object.assign({},this.$route.query)
+          params = Object.assign({},this.$route.query, { page:this.page })
           if(this.selected!='default')params.order = this.selected
 
           this.$store.dispatch('products/fetch',{
+            options:{
+              params: params
+            }
+          })
+        }
+      },
+      fetchMore(){
+        this.page++
+        var params;
+        if(this.$route.query.search){
+          params = Object.assign({
+            page:this.page,
+            q:this.$route.query.search
+          })
+          if(this.selected!='default')params.order = this.selected
+
+          this.$store.dispatch('products/fetchMore',{
+            search:true,
+            options:{
+              params: params
+            }
+          })
+        }else{
+          params = Object.assign({},this.$route.query, { page:this.page })
+          if(this.selected!='default')params.order = this.selected
+
+          this.$store.dispatch('products/fetchMore',{
             options:{
               params: params
             }
