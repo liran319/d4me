@@ -1,9 +1,9 @@
 <template>
   <Page id="product-page">
     <filter-bar v-model="selected">
-      <filter-button id="默认"/>
-      <filter-button id="最新"/>
-      <filter-button id="价格" asc/>
+      <filter-button id="default" title="默认"/>
+      <filter-button id="updated_at" title="最新"/>
+      <filter-button id="price" asc title="价格"/>
     </filter-bar>
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
@@ -25,7 +25,7 @@
   export default {
     data(){
       return {
-        selected:'默认'
+        selected:'default'
       }
     },
     computed: {
@@ -37,20 +37,32 @@
       }
     },
     mounted(){
-      if(this.$route.query.search){
-        this.$store.dispatch('products/search',{
-          options:{
-            params: {
-              q:this.$route.query.search
+      this.fetchProduct()
+    },
+    methods:{
+      fetchProduct(){
+        var params;
+        if(this.$route.query.search){
+          params = Object.assign({
+            q:this.$route.query.search
+          })
+          if(this.selected!='default')params.order = this.selected
+
+          this.$store.dispatch('products/search',{
+            options:{
+              params: params
             }
-          }
-        })
-      }else{
-        this.$store.dispatch('products/fetch',{
-          options:{
-            params: this.$route.query
-          }
-        })
+          })
+        }else{
+          params = Object.assign({},this.$route.query)
+          if(this.selected!='default')params.order = this.selected
+
+          this.$store.dispatch('products/fetch',{
+            options:{
+              params: params
+            }
+          })
+        }
       }
     },
     beforeDestroy(){
@@ -58,7 +70,7 @@
     },
     watch:{
       selected(){
-        console.log(this.selected)
+        this.fetchProduct()
       }
     }
   }

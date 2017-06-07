@@ -1,4 +1,10 @@
 #collection-page{
+  >.header{
+    background-color: #fff;
+    text-align: center;
+    font-size:14px;
+    padding:10px 0;
+  }
   .mint-navbar{
     padding-bottom:3px;
     margin-bottom:10px;
@@ -8,7 +14,7 @@
     }
   }
   .collections-list{
-    height:calc(100% - 44px)!important;
+    height:calc(100vh - 160px)!important;
     overflow:auto;
     -webkit-overflow-scrolling: touch;
     .collection-item{
@@ -103,6 +109,7 @@
   .collection-content{
     background-color: #fff;
     padding-top:15px;
+    margin-bottom:60px;
     >.title{
       text-align: center;
       margin-bottom:15px;

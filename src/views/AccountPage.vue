@@ -1,9 +1,6 @@
 <template>
   <Page id="account-page">
-    <mt-header title="我的" class="fixed" fixed>
-      <mt-button icon="more" slot="left"></mt-button>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
+    <div class="header">我的</div>
     <div class="account-header">
       <div class="avatar"></div>
       <div class="avatar-name">D4ME</div>

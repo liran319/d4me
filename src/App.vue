@@ -4,7 +4,7 @@
       <transition :name="transitionName" @afterLeave="clearTransition">
         <router-view></router-view>
       </transition>
-      <img v-if="!$route.meta.hideTab&&!$route.meta.hideDownload" id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload"/>
+      <img id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload" :style="{bottom:(typeof $route.meta.bottom == 'number'?$route.meta.bottom:55)+'px'}"/>
       <mt-tabbar v-if="!$route.meta.hideTab" :value="currentTab" @input="onTabChange">
         <mt-tab-item id="home">
           <div slot="icon" class="icon icon-home"></div>
@@ -17,10 +17,6 @@
         <mt-tab-item id="collection">
           <div slot="icon" class="icon icon-collection"></div>
           专题
-        </mt-tab-item>
-        <mt-tab-item id="cart">
-          <div slot="icon" class="icon icon-cart"></div>
-          购物袋
         </mt-tab-item>
         <mt-tab-item id="account">
           <div slot="icon" class="icon icon-account"></div>

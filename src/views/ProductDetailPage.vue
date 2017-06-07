@@ -1,17 +1,9 @@
 <template>
   <Page id="product-detail-page" :class="{showTitle:showTitle}" :style="{backgroundImage:'url('+product.image+')'}" :key="$route.params.id">
-    <mt-header fixed :title="product.title">
-      <div slot="left">
-        <mt-button icon="back" @click="goBack"></mt-button>
-      </div>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
-
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
     <div class="product-content">
-      <v-waypoint @waypoint-in="inHandler" @waypoint-out="outHandler"></v-waypoint>
       <div class="product-title">
         <div class="title">{{product.title}}</div>
         <div class="price">CN￥{{product.price}}</div>

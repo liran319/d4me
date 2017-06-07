@@ -1,17 +1,9 @@
 <template>
   <Page id="collection-detail-page" :class="{showTitle:showTitle}" :style="{backgroundImage:'url('+article.image+')'}">
-    <mt-header fixed :title="article.title">
-      <div slot="left">
-        <mt-button icon="back" @click="goBack"></mt-button>
-      </div>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
-
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
     <div class="collection-content">
-      <v-waypoint @waypoint-in="inHandler" @waypoint-out="outHandler"></v-waypoint>
       <div class="title">{{article.title}}</div>
       <div class="author">作者: {{article.author}}</div>
       <div class="item" v-for="item, index in article.content" :key="index">

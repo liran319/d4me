@@ -7,12 +7,6 @@ export default {
   methods:{
     goBack(){
       this.$router.back()
-    },
-    inHandler(){
-      this.showTitle = false
-    },
-    outHandler(){
-      this.showTitle = true
     }
   }
 }

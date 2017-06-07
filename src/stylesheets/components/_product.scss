@@ -3,7 +3,7 @@
     padding: 5px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    height: calc(100% - 44px) !important;
+    height: calc(100vh - 160px) !important;
     .product-item {
       position: relative;
       text-align: center;
@@ -34,6 +34,12 @@
   }
 }
 
+#product-page{
+  .product-list {
+    height: calc(100vh - 104px) !important;
+  }
+}
+
 #product-detail-page {
   height: 100% !important;
   padding-top: 300px;
@@ -44,6 +50,7 @@
   background-size: 100% auto;
   .product-content {
     background-color: #f8f8f8;
+    margin-bottom:110px;
     .product-title {
       padding: 15px 10px 10px 10px;
       text-align: left;

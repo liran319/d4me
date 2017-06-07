@@ -1,16 +1,12 @@
 #account-page {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  height: calc(100% - 40px) !important;
-  padding-top:40px;
-  .mint-header {
+  height: calc(100vh - 110px) !important;
+  >.header{
     background-color: #fff;
-    .mint-button-icon {
-      color: #666;
-    }
-    .mint-header-title {
-      color: #666;
-    }
+    text-align: center;
+    font-size:14px;
+    padding:10px 0;
   }
   .account-header {
     background-color: #fff;

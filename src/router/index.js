@@ -38,9 +38,7 @@ export default hooks(new Router({
       path: '/category',
       name: 'category',
       component: CategoryPage,
-      meta:{
-        hideDownload:true
-      }
+      meta:{}
     },
     {
       path: '/collection',
@@ -55,8 +53,9 @@ export default hooks(new Router({
       name: 'collection_detail',
       component: CollectionDetailPage,
       meta:{
-        sub:"collection",
-        hideTab:true
+        hideTab:true,
+        bottom:0,
+        sub:"collection"
       }
     },
     {
@@ -64,8 +63,9 @@ export default hooks(new Router({
       name: 'search',
       component: SearchPage,
       meta:{
-        sub:'home',
-        hideTab:true
+        hideTab:true,
+        bottom:0,
+        sub:'home'
       }
     },
     {
@@ -73,7 +73,8 @@ export default hooks(new Router({
       name: 'product',
       component: ProductPage,
       meta:{
-      hideTab:true
+        bottom:0,
+        hideTab:true
       }
     },
     {
@@ -81,8 +82,9 @@ export default hooks(new Router({
       name: 'product/detail',
       component: ProductDetailPage,
       meta:{
-        sub:"product",
-        hideTab:true
+        bottom:50,
+        hideTab:true,
+        sub:"product"
       }
     },
     {
@@ -98,8 +100,7 @@ export default hooks(new Router({
       name: 'account',
       component: AccountPage,
       meta:{
-        noPageAnimation:true,
-        hideDownload:true
+        noPageAnimation:true
       }
     },
     {

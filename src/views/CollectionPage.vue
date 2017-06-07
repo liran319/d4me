@@ -1,5 +1,6 @@
 <template>
   <Page id="collection-page">
+    <div class="header">专题</div>
     <mt-navbar v-model="selected">
       <mt-tab-item :id="item[1]" v-for="item,index in tabs" :key="index">{{item[0]}}</mt-tab-item>
     </mt-navbar>

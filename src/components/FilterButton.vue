@@ -1,6 +1,6 @@
 <template>
   <div :class="{'filter-button':true, is_asc:is_asc,is_desc:is_desc, selected:$parent.inputValue==id||$parent.inputValue==('-'+id)}" @click="onClick">
-    <span>{{id}}</span>
+    <span>{{title}}</span>
   </div>
 </template>
 
@@ -8,6 +8,7 @@
     export default {
       props:{
         id:String,
+        title:String,
         asc:Boolean
       },
       computed:{
