@@ -13,13 +13,11 @@ import ProductPage from '@/views/ProductPage'
 import ProductDetailPage from '@/views/ProductDetailPage'
 import CartPage from '@/views/CartPage'
 import OrderPage from '@/views/OrderPage'
+import OrderDetailPage from '@/views/OrderDetailPage'
 import FavoritePage from '@/views/FavoritePage'
 import VoucherPage from '@/views/VoucherPage'
-import NotificationPage from '@/views/NotificationPage'
-import SettingPage from '@/views/SettingPage'
-import SettingNamePage from '@/views/SettingNamePage'
-import SettingMobilePage from '@/views/SettingMobilePage'
-import SettingContactPage from '@/views/SettingContactPage'
+import ContactPage from '@/views/ContactPage'
+import NewComePage from '@/views/NewComePage'
 
 Vue.use(Router)
 
@@ -109,6 +107,14 @@ export default hooks(new Router({
       component: OrderPage
     },
     {
+      path: '/order/:id',
+      name: 'order/detail',
+      component: OrderDetailPage,
+      meta:{
+        sub:"order"
+      }
+    },
+    {
       path: '/favorite',
       name: 'favorite',
       component: FavoritePage
@@ -119,29 +125,14 @@ export default hooks(new Router({
       component: VoucherPage
     },
     {
-      path: '/notification',
-      name: 'notification',
-      component: NotificationPage
+      path: '/contact',
+      name: 'contact',
+      component: ContactPage
     },
     {
-      path: '/setting',
-      name: 'setting',
-      component: SettingPage
-    },
-    {
-      path: '/setting/name',
-      name: 'setting/name',
-      component: SettingNamePage
-    },
-    {
-      path: '/setting/mobile',
-      name: 'setting/mobile',
-      component: SettingMobilePage
-    },
-    {
-      path: '/setting/contact',
-      name: 'setting/contact',
-      component: SettingContactPage
+      path: '/newcome',
+      name: 'newcome',
+      component: NewComePage
     }
   ]
 }), store);

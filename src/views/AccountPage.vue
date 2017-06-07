@@ -13,15 +13,15 @@
         </div>
       </div>
       <div class="content">
-        <div class="item" @click="goOrders">
+        <div class="item" @click="go('/order')">
           <div class="icon icon-unpaid"></div>
           <div>待付款</div>
         </div>
-        <div class="item" @click="goOrders">
+        <div class="item" @click="go('/order')">
           <div class="icon icon-unreceived"></div>
           <div>待收货</div>
         </div>
-        <div class="item" @click="goOrders">
+        <div class="item" @click="go('/order')">
           <div class="icon icon-received"></div>
           <div>已收货</div>
         </div>
@@ -29,14 +29,14 @@
     </div>
     <div class="expand">
       <div class="item">
-        <div class="icon icon-voucher"></div>
+        <div class="icon icon-voucher" @click="go('/voucher')"></div>
         <div>代金券</div>
       </div>
       <div class="item">
         <div class="icon icon-address"></div>
         <div>地址管理</div>
       </div>
-      <div class="item is-selected">
+      <div class="item is-selected" @click="go('/contact')">
         <div class="icon icon-contact"></div>
         <div>联系客服</div>
       </div>
@@ -45,10 +45,10 @@
         <div>下载APP</div>
       </div>
       <div class="item">
-        <div class="icon icon-favorite"></div>
+        <div class="icon icon-favorite" @click="go('/favorite')"></div>
         <div>收藏</div>
       </div>
-      <div class="item is-selected">
+      <div class="item is-selected" @click="go('/cart')">
         <div class="icon icon-cart"></div>
         <div>购物车</div>
       </div>
@@ -61,8 +61,8 @@
 <script>
   export default {
     methods:{
-      goOrders(){
-        this.$router.push('/order')
+      go(path){
+        this.$router.push(path)
       }
     }
   }
