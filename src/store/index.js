@@ -9,14 +9,11 @@ const product = define(rest('/products'))
 const articles = define(rest('/articles'))
 const article = define(rest('/articles'))
 const collections = define(rest('/collections'))
-const addresses = define(rest('/addresses'))
 const banners = define(rest('/banners'))
 const brands = define(rest('/brands'))
-const coupons = define(rest('/coupons'))
 const favs = define(rest('/favs'))
 const messages = define(rest('/messages'))
 const mixes = define(rest('/mixes'))
-const orders = define(rest('/orders'))
 const rewards = define(rest('/rewards'))
 
 import createLogger from 'vuex/dist/logger'
@@ -34,6 +31,9 @@ import * as mutations from './mutations'
 import transition from '@/store/modules/transition'
 import users from '@/store/modules/users'
 import products from '@/store/modules/products'
+import orders from '@/store/modules/orders'
+import coupons from '@/store/modules/coupons'
+import address from '@/store/modules/address'
 
 const store = new Vuex.Store({
   state: {
@@ -50,11 +50,12 @@ const store = new Vuex.Store({
     collections,
     article,
     articles,
-    addresses,
+    address,
     favs,
     messages,
     mixes,
     orders,
+    coupons,
     rewards,
     users
   },
