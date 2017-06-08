@@ -17,9 +17,9 @@
       <div class="order-item" v-for="order in orders" :key="order.id">
         <div class="header">
           <div class="text">订单编号: {{order.order_no}}</div>
-          <div class="action">取消订单</div>
+          <div class="action" v-if="order.status=='new'" @click="cancelOrder(order.id)">取消订单</div>
         </div>
-        <div class="product-list">
+        <div class="product-list" @click="viewOrder(order.id)">
           <div class="product-item" v-for="item in order.order_items" :key="item.id">
             <div class="image" :style="{backgroundImage:'url('+item.product_image+')'}"></div>
             <div class="content">
@@ -77,6 +77,15 @@
       }
     },
     methods:{
+      cancelOrder(id){
+
+      },
+      refundOrder(od){
+
+      },
+      viewOrder(id){
+        this.$router.push(`/order/${id}/`)
+      }
     },
     beforeDestroy(){
       this.$store.commit('orders/reset')

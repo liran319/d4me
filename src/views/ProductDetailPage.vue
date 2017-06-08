@@ -47,10 +47,7 @@
 </template>
 
 <script>
-  import common from '@/mixins/common'
-
   export default {
-    mixins:[common],
     data(){
       return {
         selected: "tab1"

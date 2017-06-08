@@ -65,11 +65,12 @@ export default {
       })
       return promise
     },
-    fetchOne ({ commit }, payload = {}) {
-      payload.options.params = payload.options.params||{}
-      payload.options.params.auth_token = store.state.users.auth_token
-      const id = payload.id, options = payload.options
-      const promise = Axios.get(`/orders/${id}/`, options)
+    fetchOne ({ commit }, {id}) {
+      const promise = Axios.get(`/orders/${id}/`, {
+        params:{
+          auth_token : store.state.users.auth_token
+        }
+      })
       commit('start', promise)
       promise.then(function(res){
         commit('complete', res)
@@ -102,6 +103,22 @@ export default {
         commit('error', res.response)
       })
       return promise
+    },
+    acceptOrder ({ commit }, { id }) {
+      return Axios.post(`/orders/${id}/accept/`, {
+        auth_token: store.state.users.auth_token
+      })
+    },
+    cancelOrder ({ commit }, { id }) {
+      return Axios.post(`/orders/${id}/cancel/`, {
+        auth_token: store.state.users.auth_token
+      })
+    },
+    refundOrder ({ commit }, { id, amount }) {
+      return Axios.post(`/orders/${id}/refund/`, {
+        auth_token: store.state.users.auth_token,
+        amount: amount
+      })
     },
   }
 }

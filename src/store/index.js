@@ -4,6 +4,7 @@ Vue.use(Vuex)
 
 import { define } from '@/utils/factory'
 import rest from '@/store/mixins/rest'
+import _ from 'lodash'
 
 const product = define(rest('/products'))
 const articles = define(rest('/articles'))
@@ -54,7 +55,8 @@ const store = new Vuex.Store({
     favs,
     messages,
     mixes,
-    orders,
+    orders:_.cloneDeep(orders),
+    order:_.cloneDeep(orders),
     coupons,
     rewards,
     users
