@@ -31,7 +31,15 @@
 <style lang="scss" src="@/stylesheets/App.scss"></style>
 
 <script>
+  import axios from 'axios'
+
   export default {
+    data(){
+      return {
+        appId: 'wx5b486ab603b7f0a7',
+        redirect_uri:'http://app.d4me.com/api/v1/users/wx_login_code'
+      }
+    },
     computed: {
       ready(){
         return this.$store.state.users.ready
@@ -44,12 +52,21 @@
       }
     },
     mounted:function(){
-      const authIgnores = /^\/(login|forgot_password|password\/reset)\/?$/
-      if (!authIgnores.test(window.location.pathname)) {
-        this.$store.dispatch('users/fetch_global_info')
+      //微信登陆
+      if(localStorage.getItem('auth_token')||this.$route.query.token){
+        const auth_token = this.$route.query.token||localStorage.getItem('auth_token')
+        localStorage.setItem('auth_token', auth_token)
+        this.$store.commit('users/set_token', {
+          auth_token: auth_token
+        })
+
       }else{
-        this.$store.commit('users/ready')
+        var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appId}&redirect_uri=${this.redirect_uri}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+        //window.location.href = url
       }
+
+      this.$store.dispatch('users/fetch_user_info')
+      this.$store.dispatch('users/fetch_global_info')
     },
     methods: {
       //清除动画

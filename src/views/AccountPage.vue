@@ -2,15 +2,15 @@
   <Page id="account-page">
     <div class="header">我的</div>
     <div class="account-header">
-      <div class="avatar"></div>
-      <div class="avatar-name">D4ME</div>
-      <div class="button" @click="go('/newcome')">新人专享</div>
+      <div class="avatar" :style="{'background-image':'url('+user.image+')'}"></div>
+      <div class="avatar-name">{{user.username}}</div>
+      <div class="button" @click="go('/newcome')" v-if="user.new_user">新人专享</div>
     </div>
     <div class="orders">
       <div class="header">
         <div class="left">我的订单</div>
         <div class="right">
-          <div class="order-link" @click="goOrders">查看全部订单</div>
+          <div class="order-link" @click="go('/order')">查看全部订单</div>
         </div>
       </div>
       <div class="content">
@@ -61,6 +61,11 @@
 
 <script>
   export default {
+    computed:{
+      user(){
+        return this.$store.state.users.user||{}
+      }
+    },
     methods:{
       go(path){
         this.$router.push(path)

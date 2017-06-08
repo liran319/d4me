@@ -1,4 +1,5 @@
 import Axios from '@/utils/axios'
+import store from '../../store'
 
 const startRequest = function (state, payload) {
   state.pending = true
@@ -25,13 +26,12 @@ export default {
     ready: false,
     error: null,
     pending: false,
-    data: {},
-    global: {}
+    auth_token:'bxYzqz_6JQMb9oSfxcJx',
+    global: {},
+    user:{}
   },
   mutations: {
     reset(state, payload){
-      state.data = {}
-      state.list = {}
       state.error = null
       state.pending = false
     },
@@ -43,69 +43,23 @@ export default {
       state.global = payload.data
       state.ready = true
     },
+    set_token(state, payload){
+      state.auth_token = payload.auth_token
+    },
+    set_user_info(state, payload){
+      state.user = payload.user.user
+    },
     ready(state){
       state.ready = true
     }
   },
   actions: {
-    login ({ commit }, { phone, email, password }) {
-      return Axios.post('/users/login/', {
-        phone: phone,
-        email: email,
-        password: password
-      })
-    },
-    phone_login ({ commit }, { phone, valid_code }) {
-      return Axios.post('/users/phone_login/', {
-        phone: phone,
-        valid_code: valid_code
-      })
-    },
-    signup ({ commit }, { data }) {
-      return Axios.post('/users/signup/', data)
-    },
-    logout ({ commit }, { auth_token }) {
-      return Axios.post('/users/logout/', {
-        auth_token: auth_token
-      })
-    },
-    update_phone ({ commit }, { phone, valid_code, auth_token }) {
-      return Axios.post('/users/update_phone/', {
-        phone: phone,
-        valid_code: valid_code,
-        auth_token: auth_token
-      })
-    },
-    change_password ({ commit }, { password, old_password }) {
-      return Axios.post('/users/change_password/', {
-        password: password,
-        old_password: old_password
-      })
-    },
-    send_valid_code ({ commit }, { phone}) {
-      return Axios.post(`/users/send_valid_code/`, {
-        phone: phone
-      })
-    },
-    reset_password ({ commit }, { phone, valid_code, password}) {
-      return Axios.post(`/users/reset_password/`, {
-        phone: phone,
-        valid_code: valid_code,
-        password: password
-      })
-    },
     upload ({ commit }, { id, image, auth_token}) {
       return Axios.post(`/users/${id}/upload/`, {
         id: id,
         image: image,
         auth_token: auth_token
       })
-    },
-    get_wx_login_code ({ commit }) {
-      return Axios.get(`/users/wx_login_code/`)
-    },
-    get_wx_auth_code ({ commit }) {
-      return Axios.get(`/users/wx_auth_code/`)
     },
     fetch_global_info ({ commit }) {
       const promise = Axios.get(`/users/global_info/`)
@@ -116,14 +70,15 @@ export default {
       })
       return promise
     },
-    fetchOne ({ commit }, payload = {}) {
-      const id = payload.id
-      const promise = Axios.get(`/users/${id}/`)
-      commit('start', promise)
-      promise.then(function (res) {
-        commit('complete', res)
-      }, function (res) {
-        commit('error', res.response)
+    fetch_user_info ({ commit }) {
+      const promise = Axios.get(`/users/`,{
+        params:{
+          auth_token: store.state.users.auth_token
+        }
+      }).then((res)=>{
+        commit('set_user_info',{
+          user:res.data
+        })
       })
       return promise
     },
