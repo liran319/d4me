@@ -1,0 +1,33 @@
+#coupon-page{
+  >.coupons-list{
+    height: calc(100vh - 116px) !important;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding:10px;
+    >.coupons-item{
+      padding:15px;
+      background-color: #fff;
+      border-left:10px solid $primary-color;
+      border-radius: 4px;
+      margin-bottom:20px;
+      @include display(flex);
+      @include justify-content(space-between);
+      @include align-items(center);
+      >.price{
+        color: $primary-color;
+      }
+      >.content{
+        >.title{
+          margin-bottom:15px;
+        }
+        >.condition{
+          margin-bottom:10px;
+        }
+        >.condition,>.validate-date{
+          font-size:12px;
+          color:#ddd;
+        }
+      }
+    }
+  }
+}

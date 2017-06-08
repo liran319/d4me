@@ -56,20 +56,7 @@ export default {
     fetch ({ commit }, payload = {}) {
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
-      const promise = Axios.get('/orders/', payload.options)
-      commit('start', promise)
-      promise.then(function(res){
-        commit('complete', res)
-      }, function(res){
-        commit('error', res.response)
-      })
-      return promise
-    },
-    fetchOne ({ commit }, payload = {}) {
-      payload.options.params = payload.options.params||{}
-      payload.options.params.auth_token = store.state.users.auth_token
-      const id = payload.id, options = payload.options
-      const promise = Axios.get(`/coupons/${id}/`, options)
+      const promise = Axios.get('/coupons/', payload.options)
       commit('start', promise)
       promise.then(function(res){
         commit('complete', res)
