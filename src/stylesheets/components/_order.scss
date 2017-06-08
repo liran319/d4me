@@ -1,0 +1,84 @@
+#order-page{
+  .order-list{
+    height:calc(100vh - 116px)!important;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+    >.order-item{
+      margin-top:10px;
+      background-color: #fff;
+      padding:10px 0 10px 15px;
+      >.header,>.toolbar{
+        @include display(flex);
+        @include justify-content(space-between);
+        padding-right:15px;
+      }
+      >.header{
+        padding-bottom:10px;
+        border-bottom:1px solid #ddd;
+      }
+      >.toolbar{
+        border-top:1px solid #ddd;
+        padding-top:10px;
+        @include align-items(center);
+        >.price{
+          color:$primary-color;
+          -webkit-font-smoothing: antialiased;
+        }
+        .button{
+          background-color: $primary-color;
+          color:#fff;
+          border-radius:5px;
+          padding:10px 15px;
+          font-size:14px;
+          -webkit-font-smoothing: antialiased;
+          &:active{
+            background-color: darken($primary-color, 20%);
+          }
+        }
+      }
+
+      >.product-list{
+        padding-right:15px;
+        >.product-item{
+          @include align-items(center);
+          padding:10px 0;
+          border-top:1px solid #eee;
+          &:last-child{
+            border-bottom:0;
+          }
+          >.image{
+            width:80px;
+            height:80px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          >.content{
+            padding-left:10px;
+            @include flex(1);
+            @include display(flex);
+            @include justify-content(space-between);
+            >.left{
+              >.title{
+
+              }
+              >.variant{
+                color:#999;
+                margin-top:10px;
+              }
+            }
+            >.right{
+              text-align: right;
+              >.status{
+                margin-top:10px;
+                color:#ce2929;
+              }
+            }
+          }
+          @include display(flex);
+          @include justify-content(space-between);
+        }
+      }
+    }
+  }
+}

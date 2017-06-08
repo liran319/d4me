@@ -78,7 +78,7 @@ export default {
       })
       return promise
     },
-    fetchMore ({ commit }, { options, search }) {
+    fetchMore ({ commit }, payload) {
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get('/orders/', payload.options)

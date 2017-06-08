@@ -20,9 +20,9 @@ export default {
       this.page = 1
       this.$store.dispatch(`${this.storeName}/fetch`,{
         options:{
-          params:{
+          params:Object.assign({
             page:this.page
-          }
+          }, this.condition)
         }
       })
     },
@@ -30,9 +30,9 @@ export default {
       this.page++
       this.$store.dispatch(`${this.storeName}/fetchMore`,{
         options:{
-          params:{
+          params:Object.assign({
             page:this.page
-          }
+          }, this.condition)
         }
       })
     }
