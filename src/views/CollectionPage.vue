@@ -19,6 +19,7 @@
               {{item.title}}
             </div>
           </div>
+          <like-button type="Article" :id="item.id" :active="item.fav"/>
         </router-link>
         <div class="product-list">
           <div class="product-list-inner">

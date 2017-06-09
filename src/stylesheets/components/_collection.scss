@@ -21,6 +21,10 @@
       .banner-item{
         display: block;
         position: relative;
+        >.like-button{
+          top:10px;
+          right:10px;
+        }
         &:after{
           content:"";
           display:block;
@@ -105,6 +109,10 @@
   background-repeat: no-repeat;
   background-position: top center;
   background-size: auto 200px;
+  >.like-button{
+    top:10px;
+    right:10px;
+  }
   .collection-content{
     background-color: #fff;
     padding-top:15px;

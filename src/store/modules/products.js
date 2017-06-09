@@ -1,5 +1,6 @@
 import Axios from '@/utils/axios'
 import _ from 'lodash'
+import store from '../../store'
 
 const startRequest = function (state, payload) {
   state.hasMore = true
@@ -53,6 +54,8 @@ export default {
   },
   actions: {
     fetch ({ commit }, payload = {}) {
+      payload.options.params = payload.options.params||{}
+      payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get(payload.search?'/products/search/':'/products/', payload.options)
       commit('start', promise)
       promise.then(function(res){
@@ -63,6 +66,8 @@ export default {
       return promise
     },
     fetchMore ({ commit }, { options, search }) {
+      options.params = options.params||{}
+      options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get(search?'/products/search/':'/products/', options)
       commit('start', promise)
       promise.then(function(res){

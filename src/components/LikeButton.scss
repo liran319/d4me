@@ -1,0 +1,12 @@
+.like-button{
+  width:30px;
+  height:30px;
+  position: absolute;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url('../assets/unlike@2x.png');
+  &.active{
+    background-image: url('../assets/like@2x.png');
+  }
+}

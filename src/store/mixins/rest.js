@@ -1,5 +1,6 @@
 import Axios from '@/utils/axios'
 import _ from 'lodash'
+import store from '../../store'
 
 const startRequest = function (state, payload) {
   state.pending = true
@@ -52,7 +53,8 @@ export default (urlPath)=>{
     },
     actions: {
       fetchOne ({ commit }, payload = {}) {
-        const id = payload.id, options = payload.options
+        const id = payload.id, options = payload.options||{}
+        options.params = Object.assign({}, options.params, {auth_token:store.state.users.auth_token})
         const promise = Axios.get(`${urlPath}/${id}/`, options)
         commit('start', promise)
         promise.then(function(res){
@@ -63,6 +65,8 @@ export default (urlPath)=>{
         return promise
       },
       fetchMore ({ commit }, { options }) {
+        options.params = options.params||{}
+        options.params.auth_token = store.state.users.auth_token
         const promise = Axios.get(`${urlPath}/`, options)
         commit('start', promise)
         promise.then(function(res){
@@ -73,6 +77,8 @@ export default (urlPath)=>{
         return promise
       },
       fetch ({ commit }, payload = {}) {
+        payload.options.params = payload.options.params||{}
+        payload.options.params.auth_token = store.state.users.auth_token
         const promise = Axios.get(`${urlPath}/`, payload.options)
         commit('start', promise)
         promise.then(function(res){

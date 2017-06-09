@@ -1,5 +1,6 @@
 <template>
   <Page id="collection-detail-page" :style="{backgroundImage:'url('+article.image+')'}">
+    <like-button type="Article" :id="article.id" :active="article.fav"/>
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>

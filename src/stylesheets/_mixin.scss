@@ -4,6 +4,10 @@
   margin: 5px;
   width: calc(50% - 15px);
   background-color: #fff;
+  >.like-button{
+    top:10px;
+    right:10px;
+  }
   >a{
     display: block;
     >.image,>img {
@@ -30,6 +34,7 @@
 }
 
 @mixin product-item(){
+  position: relative;
   width:calc(50% - 2.5px);
   float: left;
   margin-right:5px;
@@ -42,6 +47,10 @@
     margin-right:0;
   }
 
+  >.like-button{
+    top:10px;
+    right:10px;
+  }
   >.image{
     display: block;
     width:100%;

@@ -11,9 +11,11 @@ Vue.use(VueMasonryPlugin)
 import Page from '@/container/Page'
 import FilterBar from '@/components/FilterBar'
 import FilterButton from '@/components/FilterButton'
+import LikeButton from '@/components/LikeButton'
 Vue.component('Page', Page)
 Vue.component('filter-button', FilterButton)
 Vue.component('filter-bar', FilterBar)
+Vue.component('like-button', LikeButton)
 
 import App from './App'
 

@@ -55,7 +55,7 @@
     <footer>
       <div class="left">
         <div class="button icon like">
-          <div class="icon-unlike-o"></div>
+          <like-button type="Product" :id="product.id" :active="product.fav"/>
           <span>收藏</span>
         </div>
       </div>

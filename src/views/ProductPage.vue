@@ -19,6 +19,7 @@
         <div class="brand-title">{{item.brand.title}}</div>
         <div class="title">{{item.title}}</div>
         <div class="price">￥{{item.price}}</div>
+        <like-button type="Product" :id="item.id" :active="item.fav"/>
       </div>
     </div>
   </Page>

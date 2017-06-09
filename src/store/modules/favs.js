@@ -85,10 +85,11 @@ export default {
       })
     },
     removeFav ({ commit }, { id, type }) {
-      return Axios.delete(`/favs/`, {
-        target_id: id,
-        target_type: type,
-        auth_token: store.state.users.auth_token
+      return Axios.delete(`/favs/${id}/`, {
+        params:{
+          target_id: id,
+          target_type: type,
+          auth_token: store.state.users.auth_token}
       })
     }
   }
