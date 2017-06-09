@@ -36,7 +36,16 @@ export default {
     },
     start: startRequest,
     complete: completeRequest,
-    error: errorRequest
+    error: errorRequest,
+    set_quantity(state, { product_id, variant_id, quantity}){
+      let list = state.data.order_items||[]
+      let position = _.findIndex(list,function(item){
+        return item.product_id == product_id&&item.variant_id == variant_id
+      })
+      if(position>-1){
+        list[position].quantity = quantity
+      }
+    }
   },
   actions: {
     fetch ({ commit }) {
@@ -76,6 +85,12 @@ export default {
         product_id: product_id,
         variant_id: variant_id,
         quantity: quantity
+      }).then(()=>{
+        commit('set_quantity',{
+          product_id: product_id,
+          variant_id: variant_id,
+          quantity: quantity
+        })
       })
       return promise
     }
