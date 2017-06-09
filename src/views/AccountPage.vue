@@ -14,15 +14,15 @@
         </div>
       </div>
       <div class="content">
-        <div class="item" @click="go('/order')">
+        <div class="item" @click="go('/order','new')">
           <div class="icon icon-unpaid"></div>
           <div>待付款</div>
         </div>
-        <div class="item" @click="go('/order')">
+        <div class="item" @click="go('/order','paid')">
           <div class="icon icon-unreceived"></div>
           <div>待收货</div>
         </div>
-        <div class="item" @click="go('/order')">
+        <div class="item" @click="go('/order','delivered')">
           <div class="icon icon-received"></div>
           <div>已收货</div>
         </div>
@@ -42,7 +42,7 @@
         <div>联系客服</div>
       </div>
       <div class="item">
-        <div class="icon icon-download"></div>
+        <div class="icon icon-download" @click="go('/download')"></div>
         <div>下载APP</div>
       </div>
       <div class="item">
@@ -67,8 +67,17 @@
       }
     },
     methods:{
-      go(path){
-        this.$router.push(path)
+      go(path, type){
+        let query = {}
+        if(type){
+          query = {
+            type:type
+          }
+        }
+        this.$router.push({
+          path:path,
+          query:query
+        })
       }
     }
   }

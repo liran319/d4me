@@ -4,7 +4,7 @@
       <transition :name="transitionName" @afterLeave="clearTransition">
         <router-view></router-view>
       </transition>
-      <img v-if="is_ios" id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload" :style="{bottom:(typeof $route.meta.bottom == 'number'?$route.meta.bottom:55)+'px'}"/>
+      <img v-if="is_ios&&!$route.meta.isDownload" id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload" :style="{bottom:(typeof $route.meta.bottom == 'number'?$route.meta.bottom:55)+'px'}"/>
       <mt-tabbar v-if="!$route.meta.hideTab" :value="currentTab" @input="onTabChange">
         <mt-tab-item id="home">
           <div slot="icon" class="icon icon-home"></div>
@@ -79,7 +79,7 @@
         this.$router.push(`/${value=='home'?'':value}`)
       },
       goDownload(){
-        console.log('download')
+        this.$router.push('/download')
       }
     }
   };

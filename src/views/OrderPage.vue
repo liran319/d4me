@@ -53,7 +53,7 @@
     data(){
       return {
         storeName:'orders',
-        selected:'all'
+        selected: this.$route.query.type||'all'
       }
     },
     computed: {

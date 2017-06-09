@@ -19,6 +19,7 @@ import VoucherPage from '@/views/VoucherPage'
 import ContactPage from '@/views/ContactPage'
 import NewComePage from '@/views/NewComePage'
 import AddressPage from '@/views/AddressPage'
+import DownloadPage from '@/views/DownloadPage'
 
 Vue.use(Router)
 
@@ -161,6 +162,17 @@ export default hooks(new Router({
       meta:{
         bottom:0,
         hideTab:true,
+        sub:'account'
+      }
+    },
+    {
+      path: '/download',
+      name: 'download',
+      component: DownloadPage,
+      meta:{
+        bottom:0,
+        hideTab:true,
+        isDownload:true,
         sub:'account'
       }
     },

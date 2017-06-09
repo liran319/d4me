@@ -21,7 +21,7 @@
       <div class="info">
         总金额: <span class="price">￥{{total_price}}</span>
       </div>
-      <div class="button">结算</div>
+      <div class="button" @click="goCheckout">结算</div>
     </footer>
   </Page>
 </template>
@@ -94,6 +94,9 @@
         }else{
           this.selected.splice(position, 1)
         }
+      },
+      goCheckout(){
+        console.log('checkout')
       }
     },
     watch:{
