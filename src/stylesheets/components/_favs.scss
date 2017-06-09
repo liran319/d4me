@@ -3,7 +3,24 @@
     @include scroller-container(true, false);
     padding:10px;
     >.favs-item{
-
+      &.Product{
+        @include product-item();
+      }
+      &.Article{
+        background-color: #fff;
+        margin-bottom:10px;
+        border-radius:4px;
+        overflow: hidden;
+        >.image{
+          display: block;
+          height:150px;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+        >.title{
+          padding:15px 10px;
+        }
+      }
     }
   }
 }

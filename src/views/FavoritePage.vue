@@ -3,7 +3,6 @@
     <mt-navbar v-model="selected">
       <mt-tab-item id="Product">单品</mt-tab-item>
       <mt-tab-item id="Article">专题</mt-tab-item>
-      <mt-tab-item id="Mix">搭配</mt-tab-item>
     </mt-navbar>
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
@@ -20,7 +19,8 @@
           <div class="price">￥{{item.price}}</div>
         </template>
         <template v-else-if="item.target_type=='Article'">
-
+          <router-link :to="'/product/'+item.id" class="image" :style="{backgroundImage:'url('+item.image+')'}"></router-link>
+          <div class="title">{{item.title}}</div>
         </template>
         <template v-else></template>
       </div>

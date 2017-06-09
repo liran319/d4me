@@ -43,6 +43,7 @@ export default (urlPath)=>{
         state.data = {}
         state.error = null
         state.pending = false
+        state.hasMore = false
       },
       start: startRequest,
       complete: completeRequest,

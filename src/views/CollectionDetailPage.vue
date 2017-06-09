@@ -1,5 +1,5 @@
 <template>
-  <Page id="collection-detail-page" :class="{showTitle:showTitle}" :style="{backgroundImage:'url('+article.image+')'}">
+  <Page id="collection-detail-page" :style="{backgroundImage:'url('+article.image+')'}">
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
