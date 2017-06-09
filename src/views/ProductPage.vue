@@ -2,7 +2,7 @@
   <Page id="product-page">
     <filter-bar v-model="selected">
       <filter-button id="default" title="默认"/>
-      <filter-button id="updated_at" title="最新"/>
+      <filter-button id="latest" title="最新"/>
       <filter-button id="price" asc title="价格"/>
     </filter-bar>
     <div class="loading-view" v-if="pending">
@@ -49,14 +49,16 @@
     methods:{
       fetchProduct(){
         this.page = 1;
+        if(this.selected == 'latest')this.page = 2
         var params;
         if(this.$route.query.search){
           params = Object.assign({
             page:this.page,
             q:this.$route.query.search
           })
-          if(this.selected!='default')params.order = this.selected
-
+          if(this.selected=='price'||this.selected=='-price'){
+            params.price_sort = this.selected=='price'?1:-1
+          }
           this.$store.dispatch('products/fetch',{
             search:true,
             options:{
@@ -65,7 +67,9 @@
           })
         }else{
           params = Object.assign({},this.$route.query, { page:this.page })
-          if(this.selected!='default')params.order = this.selected
+          if(this.selected=='price'||this.selected=='-price'){
+            params.price_sort = this.selected=='price'?1:-1
+          }
 
           this.$store.dispatch('products/fetch',{
             options:{
@@ -106,7 +110,7 @@
       this.$store.commit('products/reset')
     },
     watch:{
-      selected(){
+      selected(value){
         this.fetchProduct()
       }
     }
