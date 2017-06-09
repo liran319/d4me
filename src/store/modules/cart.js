@@ -54,7 +54,7 @@ export default {
       return promise
     },
     add_item({ commit }, { product_id, variant_id, quantity}){
-      const promise = Axios.post('/orders/cart_items/', {
+      const promise = Axios.post('/orders/add_cart_item/', {
         auth_token: store.state.users.auth_token,
         product_id: product_id,
         variant_id: variant_id,
@@ -63,7 +63,7 @@ export default {
       return promise
     },
     remove_item({ commit }, { product_id, variant_id}){
-      const promise = Axios.post('/orders/cart_items/', {
+      const promise = Axios.post('/orders/remove_cart_item/', {
         auth_token: store.state.users.auth_token,
         product_id: product_id,
         variant_id: variant_id
@@ -71,7 +71,7 @@ export default {
       return promise
     },
     set_item({ commit }, { product_id, variant_id, quantity}){
-      const promise = Axios.post('/orders/cart_items/', {
+      const promise = Axios.post('/orders/set_cart_item/', {
         auth_token: store.state.users.auth_token,
         product_id: product_id,
         variant_id: variant_id,

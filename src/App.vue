@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div :class="{ios:is_ios}">
     <div id="app" v-if="ready">
       <transition :name="transitionName" @afterLeave="clearTransition">
         <router-view></router-view>
       </transition>
-      <img id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload" :style="{bottom:(typeof $route.meta.bottom == 'number'?$route.meta.bottom:55)+'px'}"/>
+      <img v-if="is_ios" id="download-bar" src="./assets/download_bar1@2x.png" @click="goDownload" :style="{bottom:(typeof $route.meta.bottom == 'number'?$route.meta.bottom:55)+'px'}"/>
       <mt-tabbar v-if="!$route.meta.hideTab" :value="currentTab" @input="onTabChange">
         <mt-tab-item id="home">
           <div slot="icon" class="icon icon-home"></div>
@@ -35,7 +35,9 @@
 
   export default {
     data(){
+      var is_ios = /iPhone|iPad|iPod/i.test(navigator.userAgent)
       return {
+        is_ios: is_ios,
         appId: 'wx5b486ab603b7f0a7',
         redirect_uri:'http://app.d4me.com/api/v1/users/wx_login_code'
       }

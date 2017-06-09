@@ -1,0 +1,15 @@
+.checkbox-item{
+  >label.mint-checklist-label{
+    vertical-align: middle;
+    padding:0;
+    .mint-checkbox{
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
+.mint-checkbox-input:checked + .mint-checkbox-core {
+  background-color: #58c09d;
+  border-color: #58c09d;
+}

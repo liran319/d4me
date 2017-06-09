@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "keycode": "^2.1.9",
     "lodash": "^4.17.4",
     "mint-ui": "^2.2.7",
     "vue": "^2.2.6",

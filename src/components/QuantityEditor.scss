@@ -1,0 +1,32 @@
+@import "bourbon/bourbon";
+
+.quantity-editor{
+  display: inline-block;
+  >.content{
+    @include display(flex);
+    background-color: #eee;
+    border-radius:4px;
+    width:80px;
+    height:20px;
+    >.button{
+      display: block;
+      text-align: center;
+      width:20px;
+      line-height:20px;
+      &:active{
+        background-color: #ddd;
+      }
+    }
+    >input{
+      margin:1px;
+      height:18px;
+      padding:0;
+      @include flex(1);
+      @include appearance(none);
+      text-align: center;
+      border:0;
+      min-width: 0;
+      outline: none!important;
+    }
+  }
+}

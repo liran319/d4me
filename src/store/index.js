@@ -35,6 +35,7 @@ import orders from '@/store/modules/orders'
 import coupons from '@/store/modules/coupons'
 import address from '@/store/modules/address'
 import favs from '@/store/modules/favs'
+import cart from '@/store/modules/cart'
 
 const store = new Vuex.Store({
   state: {
@@ -53,6 +54,7 @@ const store = new Vuex.Store({
     articles,
     address,
     favs,
+    cart,
     //messages,
     //mixes,
     orders:_.cloneDeep(orders),
