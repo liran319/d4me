@@ -1,0 +1,47 @@
+@mixin product-masnory-item(){
+  position: relative;
+  text-align: center;
+  margin: 5px;
+  width: calc(50% - 15px);
+  background-color: #fff;
+  >a{
+    display: block;
+    >.image,>img {
+      width: 100%;
+    }
+  }
+  > .brand-title {
+    padding-top: 10px;
+    font-size: 14px;
+    color: #333;
+    padding-bottom: 5px;
+  }
+  > .title {
+    font-size: 12px;
+    padding-bottom: 10px;
+    color: #666;
+  }
+  > .price {
+    font-size: 12px;
+    color: $primary-color;
+    padding-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@mixin scroller-container($header, $footer){
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  $height:$banner-height;
+  @if $header {
+    $height:$height + $header-height;
+  }
+  @if $footer {
+    $height:$height + $bottom-height;
+  }
+  height: calc(100vh - #{$height}) !important;
+}
+
+@mixin font-smoothing(){
+  -webkit-font-smoothing: antialiased;
+}

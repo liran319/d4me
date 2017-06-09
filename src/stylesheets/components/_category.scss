@@ -3,9 +3,7 @@
 }
 
 .category-list{
-  height:calc(100vh - 110px)!important;
-  overflow:auto;
-  -webkit-overflow-scrolling: touch;
+  @include scroller-container(false, true);
   .category-item{
     background-color: #fff;
     height:60px;

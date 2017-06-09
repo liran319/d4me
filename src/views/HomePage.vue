@@ -18,7 +18,7 @@
         <router-link :to="'/product/'+item.id">
           <img :src="item.image" :alt="item.title"/>
         </router-link>
-        <div class="brand-title">{{item.brand.title}}</div>
+        <div class="brand-title">{{item.brand&&item.brand.title}}</div>
         <div class="title">{{item.title}}</div>
         <div class="price">￥{{item.price}}</div>
       </div>

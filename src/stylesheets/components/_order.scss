@@ -1,8 +1,6 @@
 #order-page {
   .order-list {
-    height: calc(100vh - 116px) !important;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    @include scroller-container(true, false);
     > .order-item {
       margin-top: 10px;
       background-color: #fff;
@@ -22,7 +20,7 @@
         @include align-items(center);
         > .price {
           color: $primary-color;
-          -webkit-font-smoothing: antialiased;
+          @include font-smoothing();
         }
         .button {
           background-color: $primary-color;
@@ -30,7 +28,7 @@
           border-radius: 5px;
           padding: 10px 15px;
           font-size: 14px;
-          -webkit-font-smoothing: antialiased;
+          @include font-smoothing();
           &:active {
             background-color: darken($primary-color, 20%);
           }
@@ -42,9 +40,7 @@
 }
 
 #order-detail-page>.content{
-  height: calc(100vh - 70px) !important;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  @include scroller-container(false, false);
   >.order-header{
     padding:15px 15px 15px 40px;
     background-color: #fff;

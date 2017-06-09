@@ -6,40 +6,6 @@
   bottom: 0;
   background-color: #F4F4F4;
   overflow: hidden;
-  .page-content {
-    position: absolute;
-    padding-top: $header-height;
-    margin-bottom: $bottom-height;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: transparent;
-    overflow: auto;
-    // touch-action: none;                 // prevent default touch action
-    -webkit-overflow-scrolling: touch;  // scroll effect optimize in safari
-  }
-
-  .mint-header:not(.fixed){
-    background-color: transparent;
-    @include transition(all .2s);
-    .mint-button-icon{
-      color:#666;
-    }
-    .mint-header-title{
-      @include transition(all .2s);
-      opacity:0;
-      color:#666;
-    }
-  }
-  &.showTitle{
-    .mint-header{
-      background-color: #fff;
-      .mint-header-title{
-        opacity:1;
-      }
-    }
-  }
 }
 
 #download-bar{

@@ -5,7 +5,7 @@
 .mint-tab-item{
   background-color: #fff;
   .mint-tab-item-label{
-    -webkit-font-smoothing: antialiased;
+    @include font-smoothing();
   }
   &.is-selected{
     .mint-tab-item-icon{

@@ -1,8 +1,6 @@
 #favorite-page{
   >.favs-list{
-    height: calc(100vh - 116px) !important;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    @include scroller-container(true, false);
     padding:10px;
     >.favs-item{
 

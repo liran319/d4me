@@ -1,7 +1,5 @@
 #account-page {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  height: calc(100vh - 110px) !important;
+  @include scroller-container(false, true);
   >.header{
     background-color: #fff;
     text-align: center;

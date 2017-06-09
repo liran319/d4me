@@ -13,7 +13,16 @@
          infinite-scroll-disabled="hasMore"
          infinite-scroll-distance="10"
     >
-      <div class="favs-item" v-for="item in favs" :key="item.id">
+      <div :class="'favs-item '+item.target_type" v-for="item in favs" :key="item.id">
+        <template v-if="item.target_type=='Product'">
+          <router-link :to="'/product/'+item.id" class="image" :style="{backgroundImage:'url('+item.image+')'}"></router-link>
+          <div class="title">{{item.title}}</div>
+          <div class="price">￥{{item.price}}</div>
+        </template>
+        <template v-else-if="item.target_type=='Article'">
+
+        </template>
+        <template v-else></template>
       </div>
     </div>
   </Page>

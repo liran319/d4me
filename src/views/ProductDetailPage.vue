@@ -1,5 +1,5 @@
 <template>
-  <Page id="product-detail-page" :class="{showTitle:showTitle}" :style="{backgroundImage:'url('+product.image+')'}" :key="$route.params.id">
+  <Page id="product-detail-page" :style="{backgroundImage:'url('+product.image+')'}" :key="$route.params.id">
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
@@ -15,17 +15,38 @@
         <mt-tab-item id="tab1">图文详情</mt-tab-item>
         <mt-tab-item id="tab2">购买须知</mt-tab-item>
       </mt-navbar>
-      <div class="content">
+      <div class="content" v-if="selected=='tab1'">
         <div class="item" v-for="item in product.photos" :key="item.id">
           <img class="image" :src="item.image"/>
         </div>
+      </div>
+      <div class="content notes" v-else>
+        <div class="title">
+          <div slot="icon" class="icon icon-safe"></div>
+          <span>正品保障</span>
+        </div>
+        <div class="text">D4ME目前与⼏十家时尚品牌和买手店建立合作，所销售的产品均为正品。</div>
+        <div class="title">
+          <div slot="icon" class="icon icon-shipping"></div>
+          <span>物流说明</span>
+        </div>
+        <div class="text">物品都将用顺丰快递发出，发货时间为2个工作日（特殊海外预订款除外）。</div>
+        <div class="text">海外商品涉及到国际物流及清关等问题，一般需要10-20个工作日左右。如有疑问可添加D4ME客服:dressforme 咨询我们。</div>
+        <div class="title">
+          <div slot="icon" class="icon icon-sales"></div>
+          <span>退换货说明</span>
+        </div>
+        <div class="text">⾮质量问题，不接受退货哦</div>
+        <div class="text">如果出现尺码不合，请在签收后48小时内联系客服，我们将为您更换同款不同码的商品。</div>
+        <div class="text">退回的商品必须无破损，无污渍，无穿着或使用痕迹。请保留吊牌完整，并用原包装退回。</div>
       </div>
       <div class="related-title"></div>
       <div class="related-product-list" v-masonry transition-duration="0" item-selector=".product-item">
         <div v-masonry-tile column-width=".product-item"  class="product-item" v-for="p in product.related" :key="product.id">
           <router-link :to="'/product/'+p.id">
-            <img class="image" :src="p.image" :alt="p.title"/>
+            <img :src="p.image" :alt="p.title"/>
           </router-link>
+          <div class="brand-title">{{p.brand&&p.brand.title}}</div>
           <div class="title">{{p.title}}</div>
           <div class="price">￥{{p.price}}</div>
         </div>

@@ -14,9 +14,8 @@
     }
   }
   .collections-list{
+    @include scroller-container(true, true);
     height:calc(100vh - 160px)!important;
-    overflow:auto;
-    -webkit-overflow-scrolling: touch;
     .collection-item{
       margin-bottom:10px;
       .banner-item{
@@ -90,7 +89,7 @@
           color:$primary-color;
           font-size:12px;
           width:80px;
-          -webkit-font-smoothing: antialiased;
+          @include font-smoothing();
         }
       }
     }
@@ -109,7 +108,7 @@
   .collection-content{
     background-color: #fff;
     padding-top:15px;
-    margin-bottom:60px;
+    margin-bottom:$banner-height;
     >.title{
       text-align: center;
       margin-bottom:15px;
@@ -119,7 +118,7 @@
       color:$primary-color;
       margin-bottom:15px;
       font-size:12px;
-      -webkit-font-smoothing: antialiased;
+      @include font-smoothing();
     }
     >.item{
       .image{
@@ -191,7 +190,7 @@
         color:$primary-color;
         font-size:12px;
         width:100%;
-        -webkit-font-smoothing: antialiased;
+        @include font-smoothing();
         margin-top:5px;
       }
     }
