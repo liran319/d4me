@@ -1,0 +1,11 @@
+#favorite-page{
+  >.favs-list{
+    height: calc(100vh - 116px) !important;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding:10px;
+    >.favs-item{
+
+    }
+  }
+}

@@ -53,6 +53,13 @@
       },
       articles(){
         return this.$store.state.articles.data.articles || []
+      },
+      condition(){
+        var condition = {}
+        if(this.selected != 'all'){
+          condition.category = this.selected
+        }
+        return condition
       }
     },
     beforeDestroy(){
