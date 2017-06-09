@@ -34,7 +34,7 @@
         <div>代金券</div>
       </div>
       <div class="item">
-        <div class="icon icon-address"></div>
+        <div class="icon icon-address" @click="go('/address')"></div>
         <div>地址管理</div>
       </div>
       <div class="item is-selected" @click="go('/contact')">

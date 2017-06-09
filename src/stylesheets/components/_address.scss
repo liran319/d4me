@@ -1,0 +1,36 @@
+#address-page{
+  >.content{
+    @include scroller-container(true, false);
+    padding:0 15px;
+    >.title{
+      padding-left: 10px;
+      margin: 15px 0;
+      border-left: 3px solid $primary-color;
+      color: $primary-color;
+    }
+  }
+  >.mint-header{
+    background-color: #fff;
+    color:#333;
+  }
+  .address-item{
+    background-color: #fff;
+    margin-bottom:15px;
+    padding:10px;
+    >.header{
+      @include display(flex);
+      @include justify-content(space-between);
+      padding-bottom:10px;
+      border-bottom: 1px solid #eee;
+    }
+    >.content{
+      padding:10px 30px;
+      >div{
+        margin-bottom:15px;
+        &:last-child{
+          margin-bottom:0;
+        }
+      }
+    }
+  }
+}
