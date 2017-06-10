@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import keycode from 'keycode'
 import VueMasonryPlugin from 'vue-masonry'
-import { Toast,Navbar,Button,Spinner,InfiniteScroll,Actionsheet,Header,TabItem,Tabbar,CellSwipe,Search,Field} from 'mint-ui'
+import { Cell,Switch,Navbar,Button,Spinner,InfiniteScroll,Actionsheet,Header,TabItem,Tabbar,CellSwipe,Search,Field} from 'mint-ui'
 /* 组件 */
 Vue.use(InfiniteScroll)
-Vue.component(Toast.name, Toast)
+Vue.component(Switch.name, Switch)
 Vue.component(Navbar.name, Navbar)
 Vue.component(Spinner.name, Spinner)
 Vue.component(Actionsheet.name, Actionsheet);
@@ -12,6 +12,7 @@ Vue.component(Button.name, Button);
 Vue.component(Header.name, Header);
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);
+Vue.component(Cell.name, Cell);
 Vue.component(CellSwipe.name, CellSwipe);
 Vue.component(Search.name, Search);
 Vue.component(Field.name, Field);

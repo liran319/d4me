@@ -33,7 +33,7 @@ import users from '@/store/modules/users'
 import products from '@/store/modules/products'
 import orders from '@/store/modules/orders'
 import coupons from '@/store/modules/coupons'
-import address from '@/store/modules/address'
+import addresses from '@/store/modules/address'
 import favs from '@/store/modules/favs'
 import cart from '@/store/modules/cart'
 
@@ -52,7 +52,7 @@ const store = new Vuex.Store({
     collections,
     article,
     articles,
-    address,
+    addresses,
     favs,
     cart,
     //messages,

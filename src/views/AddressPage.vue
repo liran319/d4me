@@ -6,9 +6,9 @@
     <div class="content">
       <div class="title">邮寄</div>
       <div class="address-list">
-        <div class="address-item" v-for="item in address" :key="item.id">
+        <div class="address-item" v-for="item in addresses" :key="item.id">
           <div class="header">
-            <checkbox :selected="item.default" label="默认地址"/>
+            <checkbox :selected="item.default" label="默认地址" @change="setDefaultAddress(item.id)"/>
             <div class="action" @click="removeAddress(item.id)">删除</div>
           </div>
           <div class="content" @click="onSelectAddress(item.id)">
@@ -29,18 +29,19 @@
 </template>
 
 <script>
+  import { Toast } from 'mint-ui';
   import page from '@/mixins/page'
 
   export default {
     mixins:[page],
     data(){
       return {
-        storeName:'address'
+        storeName:'addresses'
       }
     },
     computed: {
-      address(){
-        return this.$store.state.address.data.addresses || []
+      addresses(){
+        return this.$store.state.addresses.data.addresses || []
       }
     },
     methods:{
@@ -48,7 +49,21 @@
         this.$router.push('/address/new')
       },
       removeAddress(id){
-
+        var self = this
+        this.$store.dispatch('addresses/removeAddress',{
+          id:id
+        }).then(function(){
+          Toast('删除成功')
+          self.fetchData()
+        })
+      },
+      setDefaultAddress(id){
+        _.forEach(this.addresses, function(item){
+          item.default = item.id == id
+        })
+        this.$store.dispatch('addresses/setDefaultAddress',{
+          id:id
+        })
       },
       onSelectAddress(id){
 
@@ -56,9 +71,6 @@
       onSelectPickUp(){
 
       }
-    },
-    beforeDestroy(){
-      this.$store.commit('address/reset')
     }
   }
 </script>

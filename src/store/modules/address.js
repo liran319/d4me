@@ -77,18 +77,22 @@ export default {
       })
       return promise
     },
-    addCoupon ({ commit }, { code }) {
-      const promise = Axios.post(`/addresses/`, {
-        code: code,
+    setDefaultAddress({ commit }, { id }){
+      return Axios.post(`/addresses/${id}/set_default`,{
         auth_token: store.state.users.auth_token
       })
-      commit('start', promise)
-      promise.then(function(res){
-        commit('success', res)
-      }, function(res){
-        commit('error', res.response)
-      })
-      return promise
     },
+    addAddress({ commit }, { data }){
+      return Axios.post('/addresses/',Object.assign({}, data, {
+        auth_token: store.state.users.auth_token
+      }))
+    },
+    removeAddress({ commit }, { id }){
+      return Axios.delete(`/addresses/${id}`,{
+        params:{
+          auth_token: store.state.users.auth_token
+        }
+      })
+    }
   }
 }

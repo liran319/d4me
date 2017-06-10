@@ -34,3 +34,16 @@
     }
   }
 }
+
+#new-address-page{
+  >.mint-header{
+    background-color: #fff;
+    color:#333;
+  }
+  .mint-cell:last-child{
+    background-image: none;
+  }
+  .mint-cell:first-child .mint-cell-wrapper{
+    background-image: none;
+  }
+}
