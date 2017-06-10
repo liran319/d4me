@@ -66,10 +66,27 @@
         })
       },
       onSelectAddress(id){
-
+        if(this.$route.query.checkout){
+          var self = this
+          this.$store.dispatch('orders/updateOrder',{
+            id:this.$route.query.checkout,
+            address_id: id,
+            order_type: 'online'
+          }).then(function(){
+            self.$router.back()
+          })
+        }
       },
       onSelectPickUp(){
-
+        if(this.$route.query.checkout){
+          var self = this
+          this.$store.dispatch('orders/updateOrder',{
+            id:this.$route.query.checkout,
+            order_type: 'offline'
+          }).then(function(){
+            self.$router.back()
+          })
+        }
       }
     }
   }

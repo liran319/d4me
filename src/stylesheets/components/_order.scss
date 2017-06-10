@@ -40,6 +40,7 @@
 }
 
 #order-detail-page>.content{
+  position: relative;
   @include scroller-container(false, false);
   >.order-header{
     padding:15px 15px 15px 40px;
@@ -86,6 +87,20 @@
       padding:15px 0;
       @include display(flex);
       @include justify-content(space-between);
+    }
+  }
+}
+
+#order-detail-page{
+  .footer{
+    width:100%;
+    position: absolute;
+    bottom:0;
+    >.button{
+      padding:15px 0;
+      text-align: center;
+      color:#fff;
+      background-color: $primary-color;
     }
   }
 }

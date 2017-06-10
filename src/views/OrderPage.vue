@@ -37,7 +37,7 @@
         <div class="toolbar">
           <div class="price">总计:￥{{order.final_price}}</div>
           <div class="action">
-            <div class="button">确定付款</div>
+            <div class="button" v-if="order.status == 'new'" @click="goPay">确定付款</div>
           </div>
         </div>
       </div>
@@ -47,10 +47,11 @@
 
 <script>
   import page from '@/mixins/page'
+  import order from '@/mixins/order'
   import { Toast } from 'mint-ui';
 
   export default {
-    mixins:[page],
+    mixins:[page, order],
     data(){
       return {
         storeName:'orders',

@@ -91,18 +91,12 @@ export default {
       })
       return promise
     },
-    updateOrder ({ commit }, payload = {}) {
-      payload.options = payload.options||{}
-      payload.options.auth_token = store.state.users.auth_token
-      const id = payload.id, options = payload.options
-      const promise = Axios.patch(`/orders/${id}/`, options)
-      commit('start', promise)
-      promise.then(function(res){
-        commit('success', res)
-      }, function(res){
-        commit('error', res.response)
+    updateOrder ({ commit }, {id, address_id, order_type}) {
+      return Axios.patch(`/orders/${id}/`, {
+        auth_token:store.state.users.auth_token,
+        address_id: address_id,
+        order_type: order_type
       })
-      return promise
     },
     quickOrder({ commit },{value, product_id, variant_id}){
       return Axios.post(`/orders/quick/`, {
@@ -121,6 +115,12 @@ export default {
     acceptOrder ({ commit }, { id }) {
       return Axios.post(`/orders/${id}/accept/`, {
         auth_token: store.state.users.auth_token
+      })
+    },
+    useCoupon ({ commit }, { id, coupon_id }) {
+      return Axios.patch(`/orders/${id}/`, {
+        auth_token: store.state.users.auth_token,
+        coupon: coupon_id
       })
     },
     cancelOrder ({ commit }, { id }) {

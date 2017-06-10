@@ -1,7 +1,7 @@
 <template>
   <Page id="order-detail-page">
     <div class="content">
-      <div class="order-header">
+      <div class="order-header" @click="goSelectAddress">
         <div class="person">
           <div class="name">收货人: {{order.address&&order.address.name}}</div>
           <div class="phone">{{order.address&&order.address.phone}}</div>
@@ -33,21 +33,23 @@
           <div class="value">￥{{order.final_price}}</div>
         </div>
       </div>
-      <div class="order-use-coupon">
+      <div class="order-use-coupon" @click="goSelectCoupon">
         <div class="shipping-method">
           <div class="label">使用代金券</div>
           <div class="value"></div>
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <div class="button">去支付</div>
+      <div class="footer" v-if="order.status == 'new'">
+        <div class="button" @click="goPay">去支付</div>
+      </div>
     </div>
   </Page>
 </template>
 
 <script>
+  import order from '@/mixins/order'
   export default {
+    mixins:[order],
     computed: {
       pending(){
         return this.$store.state.order.pending
@@ -61,6 +63,16 @@
         this.$store.dispatch('order/fetchOne',{
           id:this.$route.params.id
         })
+      },
+      goSelectAddress(){
+        this.$router.push({path:'/address',query:{
+          checkout:this.$route.params.id
+        }})
+      },
+      goSelectCoupon(){
+        this.$router.push({path:'/voucher',query:{
+          checkout:this.$route.params.id
+        }})
       }
     },
     filters:{

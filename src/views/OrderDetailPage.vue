@@ -35,15 +35,17 @@
           <div class="value">￥{{order.final_price}}</div>
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <div class="button">去支付</div>
+      <div class="footer" v-if="order.status == 'new'">
+        <div class="button" @click="goPay">去支付</div>
+      </div>
     </div>
   </Page>
 </template>
 
 <script>
+  import order from '@/mixins/order'
     export default {
+      mixins:[order],
       computed: {
         pending(){
           return this.$store.state.order.pending
