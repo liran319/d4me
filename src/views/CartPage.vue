@@ -45,7 +45,7 @@
         })||[]
       },
       is_all(){
-        return this.all_selected.length == this.selected.length
+        return this.selected.length!=0&&this.all_selected.length == this.selected.length
       },
       total_price(){
         var price = 0, self = this

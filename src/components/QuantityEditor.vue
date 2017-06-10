@@ -34,6 +34,11 @@
         onChange(e){
           this.$emit('change', e.target.value||0)
         }
+      },
+      watch:{
+        value(v){
+          this.defaultValue = v
+        }
       }
     }
 </script>

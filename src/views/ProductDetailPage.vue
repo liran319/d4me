@@ -79,12 +79,12 @@
         <div class="variant">
           <div class="title">尺码</div>
           <div class="variant-list">
-            <div class="variant-item" v-for="item in product.variants">{{item.title}}</div>
+            <div :class="{'variant-item':true, active:item.id == variant}" v-for="item in product.variants" @click="chooseVariant(item.id)">{{item.title}}</div>
           </div>
         </div>
         <div class="buy-count">
           <div class="title">购买数量</div>
-          <quantity-editor/>
+          <quantity-editor :value="quantity" @change="quantity=$event"/>
         </div>
         <div class="button" @click="onConfirm">确定</div>
       </div>
@@ -93,11 +93,15 @@
 </template>
 
 <script>
+  import { Toast } from 'mint-ui';
   export default {
     data(){
       return {
+        goCheckout:false,
         showVariant:false,
-        selected: "tab1"
+        selected: "tab1",
+        variant:null,
+        quantity:1
       }
     },
     computed: {
@@ -119,10 +123,32 @@
         })
       },
       showVariantPage(goCheckout){
+        this.goCheckout = goCheckout
+        this.variant = null
+        this.quantity = 1
         this.showVariant = true
       },
+      chooseVariant(id){
+        this.variant = id
+      },
       onConfirm(){
-
+        var self = this
+        if(this.variant){
+          this.$store.dispatch('cart/add_item',{
+            product_id:this.$route.params.id,
+            variant_id: this.variant,
+            quantity:this.quantity
+          }).then(function(){
+            self.showVariant = false
+            if(self.goCheckout){
+              self.$router.push('/cart')
+            }else{
+              Toast('成功加入购物车!')
+            }
+          })
+        }else{
+          Toast('请选择尺码!')
+        }
       }
     },
     mounted(){
@@ -134,6 +160,12 @@
     watch:{
       $route(){
         this.fetch()
+      },
+      showVariant(value){
+        if(!value){
+          this.variant = null
+          this.quantity = 1
+        }
       }
     }
   }
