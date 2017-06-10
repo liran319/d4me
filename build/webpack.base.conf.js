@@ -33,6 +33,22 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        test: /\.html$/,
+        loader:'html-loader',
+        options:{
+          plugins: ['html-webpack-plugin']
+        }
+      },
+      {
+        test: /weui\.js.*\.js$/,
+        exclude:/node_modules/,
+        loader: 'babel-loader',
+        options: {
+          plugins: ['add-module-exports'],
+          presets: ['env']
+        }
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
