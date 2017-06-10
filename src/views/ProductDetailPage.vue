@@ -60,10 +60,35 @@
         </div>
       </div>
       <div class="right">
-        <div class="button black">加入购物车</div><!--
-        --><div class="button gold">立即购买</div>
+        <div class="button black" @click="showVariantPage()">加入购物车</div><!--
+        --><div class="button gold" @click="showVariantPage(true)">立即购买</div>
       </div>
     </footer>
+    <mt-popup v-model="showVariant" position="bottom">
+      <div class="product-variant">
+        <div class="info">
+          <div class="image-wrapper">
+            <div class="image" :style="{backgroundImage:'url('+product.image+')'}"/>
+          </div>
+          <div class="product-info">
+            <div class="price">￥{{product.price}}</div>
+            <div class="title">{{product.title}}</div>
+            <div class="sub-title">请选择型号</div>
+          </div>
+        </div>
+        <div class="variant">
+          <div class="title">尺码</div>
+          <div class="variant-list">
+            <div class="variant-item" v-for="item in product.variants">{{item.title}}</div>
+          </div>
+        </div>
+        <div class="buy-count">
+          <div class="title">购买数量</div>
+          <quantity-editor/>
+        </div>
+        <div class="button" @click="onConfirm">确定</div>
+      </div>
+    </mt-popup>
   </Page>
 </template>
 
@@ -71,6 +96,7 @@
   export default {
     data(){
       return {
+        showVariant:false,
         selected: "tab1"
       }
     },
@@ -91,6 +117,12 @@
         this.$store.dispatch('product/fetchOne',{
           id:this.$route.params.id
         })
+      },
+      showVariantPage(goCheckout){
+        this.showVariant = true
+      },
+      onConfirm(){
+
       }
     },
     mounted(){

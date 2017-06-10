@@ -29,3 +29,7 @@
 // Global Transition Effects
 @import 'transition.scss';
 
+.mint-popup{
+  width:100%;
+  z-index:99999999!important;
+}
