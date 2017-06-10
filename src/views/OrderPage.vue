@@ -47,6 +47,7 @@
 
 <script>
   import page from '@/mixins/page'
+  import { Toast } from 'mint-ui';
 
   export default {
     mixins:[page],
@@ -78,7 +79,13 @@
     },
     methods:{
       cancelOrder(id){
-
+        var self = this
+        this.$store.dispatch('order/cancelOrder',{
+          id:id
+        }).then(function(){
+          Toast('订单取消成功!')
+          self.fetchData()
+        })
       },
       refundOrder(od){
 

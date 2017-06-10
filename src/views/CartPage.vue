@@ -96,7 +96,14 @@
         }
       },
       goCheckout(){
-        console.log('checkout')
+        var self = this
+        this.$store.dispatch('orders/createOrder',{
+          items:this.cart.map(function(item){
+            return item.id
+          })
+        }).then(function(res){
+          self.$router.push(`/checkout/${res.data.order.id}/`)
+        })
       }
     },
     watch:{

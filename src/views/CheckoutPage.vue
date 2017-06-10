@@ -66,7 +66,7 @@
     filters:{
       address(order){
         var address = order.address||{}
-        return order.order_type == 'online'?(address.province+' '+address.city+' '+address.street) : "门店自取"
+        return order.order_type == 'online'?`${address.province||''} ${address.city||''} ${address.street||''}` : "门店自取"
       },
       main_title(value){
         return value.replace(/([^\s]+)\s+(.*)$/,"$1")

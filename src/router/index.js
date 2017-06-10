@@ -199,7 +199,7 @@ export default hooks(new Router({
       }
     },
     {
-      path: '/checkout',
+      path: '/checkout/:id',
       name: 'checkout',
       component: CheckoutPage,
       meta:{

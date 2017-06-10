@@ -104,6 +104,20 @@ export default {
       })
       return promise
     },
+    quickOrder({ commit },{value, product_id, variant_id}){
+      return Axios.post(`/orders/quick/`, {
+        auth_token: store.state.users.auth_token,
+        product_id: product_id,
+        variant_id: variant_id,
+        quantity: value
+      })
+    },
+    createOrder({ commit },{ items }){
+      return Axios.post(`/orders/`, {
+        auth_token: store.state.users.auth_token,
+        items: items
+      })
+    },
     acceptOrder ({ commit }, { id }) {
       return Axios.post(`/orders/${id}/accept/`, {
         auth_token: store.state.users.auth_token

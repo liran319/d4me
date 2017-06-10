@@ -143,18 +143,25 @@
       onConfirm(){
         var self = this
         if(this.variant){
-          this.$store.dispatch('cart/add_item',{
-            product_id:this.$route.params.id,
-            variant_id: this.variant,
-            quantity:this.quantity
-          }).then(function(){
-            self.showVariant = false
-            if(self.goCheckout){
-              self.$router.push('/checkout')
-            }else{
+          if(self.goCheckout){
+            this.$store.dispatch('orders/quickOrder',{
+              product_id:this.$route.params.id,
+              variant_id: this.variant,
+              quantity:this.quantity
+            }).then(function(res){
+              self.showVariant = false
+              self.$router.push(`/checkout/${res.data.order.id}/`)
+            })
+          }else{
+            this.$store.dispatch('cart/add_item',{
+              product_id:this.$route.params.id,
+              variant_id: this.variant,
+              quantity:this.quantity
+            }).then(function(){
               Toast('成功加入购物车!')
-            }
-          })
+              self.showVariant = false
+            })
+          }
         }else{
           Toast('请选择尺码!')
         }
