@@ -25,11 +25,12 @@
 @import 'components/cart';
 @import 'components/new';
 @import 'components/address';
+@import 'components/success';
 
 // Global Transition Effects
 @import 'transition.scss';
 
-.mint-popup{
+.mint-popup,.mint-actionsheet{
   width:100%;
   z-index:999999!important;
 }

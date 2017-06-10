@@ -45,13 +45,8 @@
     methods:{
       useCoupon(id){
         if(this.$route.query.checkout){
-          var self = this
-          this.$store.dispatch('orders/useCoupon',{
-            id:this.$route.query.checkout,
-            coupon_id: id
-          }).then(function(){
-            self.$router.back()
-          })
+          this.$store.commit('order/useCoupon',{id: id})
+          this.$router.back()
         }
       }
     },

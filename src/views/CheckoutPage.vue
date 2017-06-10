@@ -35,7 +35,7 @@
       </div>
       <div class="order-use-coupon" @click="goSelectCoupon">
         <div class="shipping-method">
-          <div class="label">使用代金券</div>
+          <div class="label">{{coupon?'已使用':'使用代金券'}}</div>
           <div class="value"></div>
         </div>
       </div>
@@ -43,6 +43,10 @@
         <div class="button" @click="goPay">去支付</div>
       </div>
     </div>
+    <mt-actionsheet
+      cancelText="取消"
+      :actions="actions"
+      v-model="sheetVisible"/>
   </Page>
 </template>
 
@@ -51,6 +55,9 @@
   export default {
     mixins:[order],
     computed: {
+      coupon(){
+        return this.$store.state.order.coupon
+      },
       pending(){
         return this.$store.state.order.pending
       },

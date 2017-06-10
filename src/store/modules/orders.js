@@ -36,6 +36,7 @@ export default {
   namespaced:true,
   state: {
     error: null,
+    coupon:null,
     pending: false,
     hasMore: false,
     data: {},
@@ -46,11 +47,15 @@ export default {
       state.data = {}
       state.error = null
       state.pending = false
+      state.coupon = null
     },
     start: startRequest,
     complete: completeRequest,
     more_complete: completeMoreRequest,
-    error: errorRequest
+    error: errorRequest,
+    useCoupon (state, { id }) {
+      state.coupon = id
+    }
   },
   actions: {
     fetch ({ commit }, payload = {}) {
@@ -112,15 +117,16 @@ export default {
         items: items
       })
     },
+    payOrder({ commit }, { id, channel, coupon }){
+      return Axios.post(`/orders/${id}/pay/`, {
+        auth_token: store.state.users.auth_token,
+        coupon: coupon,
+        channel: channel
+      })
+    },
     acceptOrder ({ commit }, { id }) {
       return Axios.post(`/orders/${id}/accept/`, {
         auth_token: store.state.users.auth_token
-      })
-    },
-    useCoupon ({ commit }, { id, coupon_id }) {
-      return Axios.patch(`/orders/${id}/`, {
-        auth_token: store.state.users.auth_token,
-        coupon: coupon_id
       })
     },
     cancelOrder ({ commit }, { id }) {

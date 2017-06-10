@@ -22,6 +22,7 @@ import AddressPage from '@/views/AddressPage'
 import DownloadPage from '@/views/DownloadPage'
 import NewAddressPage from '@/views/NewAddressPage'
 import CheckoutPage from '@/views/CheckoutPage'
+import SuccessPage from '@/views/SuccessPage'
 
 Vue.use(Router)
 
@@ -196,6 +197,15 @@ export default hooks(new Router({
         bottom:0,
         hideTab:true,
         sub:'account'
+      }
+    },
+    {
+      path: '/success',
+      name: 'success',
+      component: SuccessPage,
+      meta:{
+        bottom:0,
+        hideTab:true
       }
     },
     {
