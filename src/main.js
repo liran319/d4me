@@ -1,8 +1,20 @@
 import Vue from 'vue'
 import keycode from 'keycode'
 /* 组件 */
-import Mint from 'mint-ui'
-Vue.use(Mint)
+import { Toast,Navbar,Button,Spinner,InfiniteScroll,Actionsheet,Picker,Header,TabItem,Tabbar,CellSwipe,Search,Field} from 'mint-ui'
+Vue.use(Toast)
+Vue.component(Navbar.name, Navbar)
+Vue.component(Spinner.name, Spinner)
+Vue.use(InfiniteScroll)
+Vue.use(Actionsheet)
+Vue.use(Picker)
+Vue.component(Button.name, Button);
+Vue.component(Header.name, Header);
+Vue.component(Tabbar.name, Tabbar);
+Vue.component(TabItem.name, TabItem);
+Vue.use(CellSwipe)
+Vue.use(Search)
+Vue.component(Field.name, Field);
 /* 自定义全局组件*/
 import VueMasonryPlugin from 'vue-masonry';
 Vue.use(VueMasonryPlugin)
@@ -15,6 +27,7 @@ import FilterButton from '@/components/FilterButton'
 import LikeButton from '@/components/LikeButton'
 import Checkbox from '@/components/Checkbox'
 import QuantityEditor from '@/components/QuantityEditor'
+import CityPicker from '@/components/CityPicker'
 
 Vue.component('Page', Page)
 Vue.component('filter-button', FilterButton)
@@ -22,6 +35,7 @@ Vue.component('filter-bar', FilterBar)
 Vue.component('like-button', LikeButton)
 Vue.component('quantity-editor', QuantityEditor)
 Vue.component('checkbox', Checkbox)
+Vue.component('city-picker', CityPicker)
 
 import App from './App'
 

@@ -20,6 +20,7 @@ import ContactPage from '@/views/ContactPage'
 import NewComePage from '@/views/NewComePage'
 import AddressPage from '@/views/AddressPage'
 import DownloadPage from '@/views/DownloadPage'
+import NewAddressPage from '@/views/NewAddressPage'
 
 Vue.use(Router)
 
@@ -133,6 +134,16 @@ export default hooks(new Router({
         bottom:0,
         hideTab:true,
         sub:'account'
+      }
+    },
+    {
+      path: '/address/new',
+      name: 'address_new',
+      component: NewAddressPage,
+      meta:{
+        bottom:0,
+        hideTab:true,
+        sub:'address'
       }
     },
     {
