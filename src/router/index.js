@@ -21,6 +21,7 @@ import NewComePage from '@/views/NewComePage'
 import AddressPage from '@/views/AddressPage'
 import DownloadPage from '@/views/DownloadPage'
 import NewAddressPage from '@/views/NewAddressPage'
+import CheckoutPage from '@/views/CheckoutPage'
 
 Vue.use(Router)
 
@@ -195,6 +196,15 @@ export default hooks(new Router({
         bottom:0,
         hideTab:true,
         sub:'account'
+      }
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: CheckoutPage,
+      meta:{
+        bottom:0,
+        hideTab:true
       }
     }
   ]

@@ -24,15 +24,19 @@
             </div>
           </div>
         </div>
-        <div class="detail-info">
-          <div class="line" v-for="item, index in order.display_list" :key="index">
-            <div class="label">{{item[0]}}</div>
-            <div class="value">{{item[1]}}</div>
-          </div>
+        <div class="shipping-method">
+          <div class="label">发货方式</div>
+          <div class="value">{{order.order_type=='online'?'邮寄':'门店自取'}}</div>
         </div>
-        <div class="payment-info">
-          <div class="label">实付款:</div>
+        <div class="total-price">
+          <div class="label">订单总计</div>
           <div class="value">￥{{order.final_price}}</div>
+        </div>
+      </div>
+      <div class="order-use-coupon">
+        <div class="shipping-method">
+          <div class="label">使用代金券</div>
+          <div class="value"></div>
         </div>
       </div>
     </div>
@@ -43,44 +47,44 @@
 </template>
 
 <script>
-    export default {
-      computed: {
-        pending(){
-          return this.$store.state.order.pending
-        },
-        order(){
-          return this.$store.state.order.data.order || {}
-        }
+  export default {
+    computed: {
+      pending(){
+        return this.$store.state.order.pending
       },
-      methods:{
-        fetch(){
-          this.$store.dispatch('order/fetchOne',{
-            id:this.$route.params.id
-          })
-        }
+      order(){
+        return this.$store.state.order.data.order || {}
+      }
+    },
+    methods:{
+      fetch(){
+        this.$store.dispatch('order/fetchOne',{
+          id:this.$route.params.id
+        })
+      }
+    },
+    filters:{
+      address(order){
+        var address = order.address||{}
+        return order.order_type == 'online'?(address.province+' '+address.city+' '+address.street) : "门店自取"
       },
-      filters:{
-        address(order){
-          var address = order.address||{}
-          return order.order_type == 'online'?(address.province+' '+address.city+' '+address.street) : "门店自取"
-        },
-        main_title(value){
-          return value.replace(/([^\s]+)\s+(.*)$/,"$1")
-        },
-        sub_title(value){
-          return value.replace(/([^\s]+)\s+(.*)$/,"$2")
-        }
+      main_title(value){
+        return value.replace(/([^\s]+)\s+(.*)$/,"$1")
       },
-      mounted(){
+      sub_title(value){
+        return value.replace(/([^\s]+)\s+(.*)$/,"$2")
+      }
+    },
+    mounted(){
+      this.fetch()
+    },
+    beforeDestroy(){
+      this.$store.commit('order/reset')
+    },
+    watch:{
+      $route(){
         this.fetch()
-      },
-      beforeDestroy(){
-        this.$store.commit('order/reset')
-      },
-      watch:{
-        $route(){
-          this.fetch()
-        }
       }
     }
+  }
 </script>

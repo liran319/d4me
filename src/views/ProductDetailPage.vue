@@ -73,7 +73,7 @@
           <div class="product-info">
             <div class="price">￥{{product.price}}</div>
             <div class="title">{{product.title}}</div>
-            <div class="sub-title">请选择型号</div>
+            <div class="sub-title">{{subtitle}}</div>
           </div>
         </div>
         <div class="variant">
@@ -114,6 +114,15 @@
       variants(){
         var variants = this.product.variants||[]
         return _.map(variants, function(item){return item.title}).join(' ')
+      },
+      subtitle(){
+        if(!this.variant){
+          return '请选择型号'
+        }else{
+          var variants = this.product.variants||[], self = this
+          var item =  _.find(variants, function(item){return item.id == self.variant})
+          return `已选择 ${item.title}`
+        }
       }
     },
     methods:{
@@ -141,7 +150,7 @@
           }).then(function(){
             self.showVariant = false
             if(self.goCheckout){
-              self.$router.push('/cart')
+              self.$router.push('/checkout')
             }else{
               Toast('成功加入购物车!')
             }
