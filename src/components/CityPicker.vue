@@ -2,7 +2,7 @@
   <a class="city-picker mint-cell mint-field"  @click="openPicker">
     <div class="mint-cell-wrapper">
       <div class="mint-cell-title"><span class="mint-cell-text">{{label}}</span></div>
-      <div class="mint-cell-value"></div>
+      <div class="mint-cell-value">{{displayValue}}</div>
     </div>
   </a>
 </template>
@@ -15,9 +15,13 @@
 
   export default {
     props: {
-      label: String
+      label: String,
+      value: String
     },
-    mounted(){
+    data(){
+      return {
+        displayValue:this.value
+      }
     },
     methods: {
       openPicker(){
@@ -27,11 +31,16 @@
           onConfirm: this.onConfirm
         })
       },
+      getDisplayValue(value){
+        return _.map(value, function(item){
+          return item.label
+        }).join(" ")
+      },
       onChange(value){
-        console.log(value)
+        this.displayValue = this.getDisplayValue(value)
       },
       onConfirm(){
-        console.log('confirm')
+        this.$emit('input', this.displayValue)
       }
     }
   }
