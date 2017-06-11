@@ -2,7 +2,9 @@
   <Page id="account-page">
     <div class="header">我的</div>
     <div class="account-header">
-      <div class="avatar" :style="{'background-image':'url('+user.image+')'}"></div>
+      <div class="avatar" :style="{'background-image':'url('+(url||user.image)+')'}">
+        <input type="file" ref="file" @change="changeAvatar"/>
+      </div>
       <div class="avatar-name">{{user.username}}</div>
       <div class="button" @click="go('/newcome')" v-if="user.new_user">新人专享</div>
     </div>
@@ -60,13 +62,40 @@
 </template>
 
 <script>
+  import { Toast } from 'mint-ui';
   export default {
+    data(){
+      return {
+        url:""
+      }
+    },
     computed:{
       user(){
         return this.$store.state.users.user||{}
       }
     },
     methods:{
+      changeAvatar(e){
+        var files = e.target.files
+        var self = this;
+        if (!files || !files.length) return
+        var file = files[0]
+        if(/image/.test(file.type)){
+          var reader = new FileReader()
+          self.$store.dispatch('users/upload',{
+            file:file
+          }).then(function(){
+            self.$store.dispatch('users/fetch_user_info')
+          })
+          reader.onload = function () {
+            self.url = this.result
+          }
+          reader.readAsDataURL(file)
+        }else{
+          Toast("非法格式")
+          this.$refs.file.value = null
+        }
+      },
       go(path, type){
         let query = {}
         if(type){

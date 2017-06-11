@@ -26,9 +26,9 @@ export default {
     ready: false,
     error: null,
     pending: false,
-    auth_token:'bxYzqz_6JQMb9oSfxcJx',
+    auth_token: 'bxYzqz_6JQMb9oSfxcJx',
     global: {},
-    user:{}
+    user: {}
   },
   mutations: {
     reset(state, payload){
@@ -54,11 +54,13 @@ export default {
     }
   },
   actions: {
-    upload ({ commit }, { id, image, auth_token}) {
-      return Axios.post(`/users/${id}/upload/`, {
-        id: id,
-        image: image,
-        auth_token: auth_token
+    upload ({ commit }, { file }) {
+      var formData = new FormData()
+      formData.append('image', file)
+      formData.append('auth_token', store.state.users.auth_token)
+      formData.append('id', store.state.users.user.id)
+      return Axios.post(`/users/${store.state.users.user.id}/upload/`, formData,{
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })
     },
     fetch_global_info ({ commit }) {
@@ -71,13 +73,13 @@ export default {
       return promise
     },
     fetch_user_info ({ commit }) {
-      const promise = Axios.get(`/users/`,{
-        params:{
+      const promise = Axios.get(`/users/`, {
+        params: {
           auth_token: store.state.users.auth_token
         }
-      }).then((res)=>{
-        commit('set_user_info',{
-          user:res.data
+      }).then((res)=> {
+        commit('set_user_info', {
+          user: res.data
         })
       })
       return promise
