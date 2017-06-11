@@ -1,16 +1,16 @@
 export default {
-  data(){
-    return {
-      actions:[{
-        name:"支付宝",
-        method:this.payOrder.bind(this,"alipay")
-      },{
-        name:"微信",
-        method:this.payOrder.bind(this,"wx")
-      }],
-      sheetVisible: false
-    }
-  },
+  //data(){
+  //  return {
+  //    actions:[{
+  //      name:"支付宝",
+  //      method:this.payOrder.bind(this,"alipay")
+  //    },{
+  //      name:"微信",
+  //      method:this.payOrder.bind(this,"wx")
+  //    }],
+  //    sheetVisible: false
+  //  }
+  //},
   methods:{
     goPay(){
       this.$store.dispatch('order/payOrder',{

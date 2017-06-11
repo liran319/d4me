@@ -10,7 +10,7 @@
       <div class="header">
         <div class="left">我的订单</div>
         <div class="right">
-          <div class="order-link" @click="go('/order')">查看全部订单</div>
+          <div class="order-link" @click="go('/order')"><span>查看全部订单</span><i class="icon icon-arrow-right"></i></div>
         </div>
       </div>
       <div class="content">

@@ -4,8 +4,8 @@
       <mt-button icon="back" slot="right" @click="addAddress"></mt-button>
     </mt-header>
     <div class="content">
-      <div class="title">邮寄</div>
-      <div class="address-list">
+      <div class="title" v-if="addresses&&addresses.length">邮寄</div>
+      <div class="address-list" v-if="addresses&&addresses.length">
         <div class="address-item" v-for="item in addresses" :key="item.id">
           <div class="header">
             <checkbox :selected="item.default" label="默认地址" @change="setDefaultAddress(item.id)"/>
