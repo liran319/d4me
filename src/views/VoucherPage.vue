@@ -1,5 +1,8 @@
 <template>
   <Page id="coupon-page">
+    <mt-header title="代金券">
+      <i class="icon icon-plus" slot="right" @click="addCoupon"></i>
+    </mt-header>
     <mt-navbar v-model="selected">
       <mt-tab-item id="available">未使用</mt-tab-item>
       <mt-tab-item id="used">已使用</mt-tab-item>
@@ -48,6 +51,9 @@
           this.$store.commit('order/useCoupon',{id: id})
           this.$router.back()
         }
+      },
+      addCoupon(){
+        this.$router.push('/voucher/new')
       }
     },
     beforeDestroy(){

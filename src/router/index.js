@@ -21,6 +21,7 @@ import NewComePage from '@/views/NewComePage'
 import AddressPage from '@/views/AddressPage'
 import DownloadPage from '@/views/DownloadPage'
 import NewAddressPage from '@/views/NewAddressPage'
+import NewCouponPage from '@/views/NewCouponPage'
 import CheckoutPage from '@/views/CheckoutPage'
 import SuccessPage from '@/views/SuccessPage'
 
@@ -166,6 +167,16 @@ export default hooks(new Router({
         bottom:0,
         hideTab:true,
         sub:'account'
+      }
+    },
+    {
+      path: '/voucher/new',
+      name: 'new_voucher',
+      component: NewCouponPage,
+      meta:{
+        bottom:0,
+        hideTab:true,
+        sub:'voucher'
       }
     },
     {

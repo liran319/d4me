@@ -1,4 +1,8 @@
 #coupon-page{
+  >.mint-header{
+    background-color: #fff;
+    color:#333;
+  }
   >.coupons-list{
     @include scroller-container(true, false);
     padding:10px;
@@ -27,5 +31,18 @@
         }
       }
     }
+  }
+}
+
+#new-coupon-page{
+  >.mint-header{
+    background-color: #fff;
+    color:#333;
+  }
+  .mint-cell:last-child{
+    background-image: none;
+  }
+  .mint-cell:first-child .mint-cell-wrapper{
+    background-image: none;
   }
 }

@@ -2,11 +2,15 @@
   <Page id="order-detail-page">
     <div class="content">
       <div class="order-header">
-        <div class="person">
-          <div class="name">收货人: {{order.address&&order.address.name}}</div>
-          <div class="phone">{{order.address&&order.address.phone}}</div>
+        <div class="info" v-if="order.address&&order.order_type=='online'||order.order_type=='offline'">
+          <div class="person">
+            <div class="name">收货人: {{order.address&&order.address.name}}</div>
+            <div class="phone">{{order.address&&order.address.phone}}</div>
+          </div>
+          <div class="address">收货地址: {{order|address}}</div>
         </div>
-        <div class="address">收货地址: {{order|address}}</div>
+        <div class="info" v-else>请选择收货地址</div>
+        <i class="icon-arrow-right"></i>
       </div>
       <div class="order-info">
         <div class="product-list">

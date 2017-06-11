@@ -1,7 +1,7 @@
 <template>
   <Page id="address-page">
     <mt-header title="地址管理">
-      <mt-button icon="back" slot="right" @click="addAddress"></mt-button>
+      <i class="icon icon-plus" slot="right" @click="addAddress"></i>
     </mt-header>
     <div class="content">
       <div class="title" v-if="addresses&&addresses.length">邮寄</div>

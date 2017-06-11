@@ -46,7 +46,14 @@
     padding:15px 15px 15px 40px;
     background-color: #fff;
     margin-bottom:5px;
-    >.person{
+    @include display(flex);
+    @include justify-content(space-between);
+    @include align-items(center);
+    >.icon-arrow-right{
+      width:30px;
+      height:30px;
+    }
+    >.info>.person{
       @include display(flex);
       @include justify-content(space-between);
       margin-bottom:10px;
