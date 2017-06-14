@@ -10,9 +10,8 @@
 <style lang="scss" src="./CityPicker.scss"></style>
 
 <script>
-  import WeUI from 'weui.js/src/picker/picker'
+  import './picker'
   import cityData from './city-data'
-
   export default {
     props: {
       label: String,
@@ -25,7 +24,7 @@
     },
     methods: {
       openPicker(){
-        WeUI.picker(cityData, {
+        weui.picker(cityData, {
           depth: 3,
           onChange: this.onChange,
           onConfirm: this.onConfirm

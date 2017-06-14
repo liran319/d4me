@@ -40,15 +40,6 @@ module.exports = {
         }
       },
       {
-        test: /weui\.js.*\.js$/,
-        exclude:/node_modules/,
-        loader: 'babel-loader',
-        options: {
-          plugins: ['add-module-exports'],
-          presets: ['env']
-        }
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
