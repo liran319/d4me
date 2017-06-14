@@ -37,9 +37,7 @@
     data(){
       var is_ios = /iPhone|iPad|iPod/i.test(navigator.userAgent)
       return {
-        is_ios: is_ios,
-        appId: 'wx5b486ab603b7f0a7',
-        redirect_uri:'http://app.d4me.com/api/v1/users/wx_login_code'
+        is_ios: is_ios
       }
     },
     computed: {
@@ -61,13 +59,8 @@
         this.$store.commit('users/set_token', {
           auth_token: auth_token
         })
-
-      }else{
-        var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appId}&redirect_uri=${this.redirect_uri}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
-        //window.location.href = url
+        this.$store.dispatch('users/fetch_user_info')
       }
-
-      this.$store.dispatch('users/fetch_user_info')
       this.$store.dispatch('users/fetch_global_info')
     },
     methods: {

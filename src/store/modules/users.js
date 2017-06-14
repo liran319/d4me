@@ -26,7 +26,7 @@ export default {
     ready: false,
     error: null,
     pending: false,
-    auth_token: 'bxYzqz_6JQMb9oSfxcJx',
+    auth_token: '',
     global: {},
     user: {}
   },

@@ -2,10 +2,10 @@
   <Page id="account-page">
     <div class="header">我的</div>
     <div class="account-header">
-      <div class="avatar" :style="{'background-image':'url('+(url||user.image)+')'}">
-        <input type="file" ref="file" @change="changeAvatar"/>
+      <div class="avatar" :style="{'background-image':'url('+(url||user.image)+')'}" @click="login">
+        <input type="file" ref="file" @change="changeAvatar" v-if="user.auth_token"/>
       </div>
-      <div class="avatar-name">{{user.username}}</div>
+      <div class="avatar-name">{{user.username||'点击登录'}}</div>
       <div class="button" @click="go('/newcome')" v-if="user.new_user">新人专享</div>
     </div>
     <div class="orders">
@@ -66,46 +66,53 @@
   export default {
     data(){
       return {
-        url:""
+        url: "",
+        appId: 'wx5b486ab603b7f0a7',
+        redirect_uri: 'http://app.d4me.com/api/v1/users/wx_login_code'
       }
     },
-    computed:{
+    computed: {
       user(){
-        return this.$store.state.users.user||{}
+        return this.$store.state.users.user || {}
       }
     },
-    methods:{
+    methods: {
+      login(e){
+        if (!this.user.auth_token) {
+          var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appId}&redirect_uri=${this.redirect_uri}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+          window.location.href = url
+          e.preventDefault()
+        }
+      },
       changeAvatar(e){
-        var files = e.target.files
-        var self = this;
         if (!files || !files.length) return
-        var file = files[0]
-        if(/image/.test(file.type)){
+        var file = files[ 0 ]
+        if (/image/.test(file.type)) {
           var reader = new FileReader()
-          self.$store.dispatch('users/upload',{
-            file:file
-          }).then(function(){
+          self.$store.dispatch('users/upload', {
+            file: file
+          }).then(function () {
             self.$store.dispatch('users/fetch_user_info')
           })
           reader.onload = function () {
             self.url = this.result
           }
           reader.readAsDataURL(file)
-        }else{
+        } else {
           Toast("非法格式")
           this.$refs.file.value = null
         }
       },
       go(path, type){
         let query = {}
-        if(type){
+        if (type) {
           query = {
-            type:type
+            type: type
           }
         }
         this.$router.push({
-          path:path,
-          query:query
+          path: path,
+          query: query
         })
       }
     }
