@@ -138,7 +138,7 @@
       loadImage(url){
         var self = this
         var image = new Image()
-        var width = window.outerWidth
+        var width = window.screen.width
         image.onload = function(){
           self.padding = image.height/image.width*width
         }
