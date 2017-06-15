@@ -1,5 +1,5 @@
 <template>
-  <Page id="product-detail-page" :style="{backgroundImage:'url('+product.image+')'}" :key="$route.params.id">
+  <Page id="product-detail-page" :style="{paddingTop:padding+'px',backgroundImage:'url('+product.image+')'}" :key="$route.params.id">
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
@@ -101,6 +101,7 @@
         showVariant:false,
         selected: "tab1",
         variant:null,
+        padding:300,
         quantity:1
       }
     },
@@ -127,9 +128,21 @@
     },
     methods:{
       fetch(){
+        var self = this
         this.$store.dispatch('product/fetchOne',{
           id:this.$route.params.id
+        }).then(function(){
+          self.loadImage(self.product.image)
         })
+      },
+      loadImage(url){
+        var self = this
+        var image = new Image()
+        var width = window.outerWidth
+        image.onload = function(){
+          self.padding = image.height/image.width*width
+        }
+        image.src = url
       },
       showVariantPage(goCheckout){
         this.goCheckout = goCheckout
