@@ -33,7 +33,7 @@
         })
       },
       goOrders(){
-        this.$router.push('/order')
+        this.$router.replace('/order')
       }
     },
     mounted(){
