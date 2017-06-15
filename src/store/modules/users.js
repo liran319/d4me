@@ -95,5 +95,16 @@ export default {
       })
       return promise
     },
+    send_code({ commit }, { phone }){
+      return Axios.post(`/users/send_valid_code/`, {
+        phone: phone
+      })
+    },
+    send_info({ commit }, { name, content }){
+      return Axios.post(`/users/click/`, {
+        name: name,
+        content:content
+      })
+    }
   }
 }

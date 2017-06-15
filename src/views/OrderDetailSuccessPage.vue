@@ -10,6 +10,15 @@
         专属折扣、造型搭配等更多服务。
       </div>
       <footer>
+        <div class="form">
+          <div class="field">
+            <input type="mobile" placeholder="请输入您的手机号" v-model="phone"/>
+          </div>
+          <div class="field">
+            <input type="text" placeholder="请输入验证码" v-model="code"/>
+            <div :class="{button:true, disabled:timer>0}" @click="getCode">{{timer>0?'重新发送('+timer+'s)':'获取验证码'}}</div>
+          </div>
+        </div>
         <div class="button" @click="goOrders">确认</div>
       </footer>
     </div>
@@ -17,7 +26,15 @@
 </template>
 
 <script>
+  import { Toast } from 'mint-ui';
   export default {
+    data(){
+      return {
+        phone:'',
+        code:'',
+        timer:0
+      }
+    },
     computed: {
       pending(){
         return this.$store.state.order.pending
@@ -33,7 +50,42 @@
         })
       },
       goOrders(){
-        this.$router.replace('/order')
+        if(this.phone&&this.code){
+          var self = this
+          this.$store.dispatch('users/send_info',{
+            name:'pay_order_success',
+            content:JSON.stringify({
+              mobile:this.mobile,
+              code:this.code
+            })
+          }).then(function(){
+            self.$router.replace('/order')
+          })
+        }else{
+          Toast('请填写验证码')
+        }
+      },
+      getCode(){
+        if(this.phone){
+          var self = this
+          this.$store.dispatch('users/send_code',{
+            phone:this.phone
+          }).then(function(){
+            self.startTimer()
+          })
+        }else{
+          Toast('请输入手机号!')
+        }
+      },
+      startTimer(){
+        this.timer = 61;
+        this.startCount()
+      },
+      startCount(){
+        if(this.timer>0){
+          this.timer--;
+          setTimeout(this.startCount,1000)
+        }
       }
     },
     mounted(){
@@ -41,11 +93,6 @@
     },
     beforeDestroy(){
       this.$store.commit('order/reset')
-    },
-    watch: {
-      $route(){
-        this.fetch()
-      }
     }
   }
 </script>

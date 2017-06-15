@@ -192,6 +192,46 @@
       background-color: #fff;
       padding-top:40px;
       padding-bottom:30px;
+      @include display(flex);
+      @include flex-direction(column);
+      >.form{
+        @include flex(1);
+      }
+      >.form>.field{
+        width:90%;
+        position: relative;
+        margin:0 auto 15px auto;
+        @include display(flex);
+        >input{
+          min-width:0;
+          padding:8px;
+          -webkit-appearance: none;
+          outline: none!important;
+          border:0;
+          font-size:16px;
+          border-bottom:1px solid #CACACA;
+          @include flex(1);
+        }
+        >.button{
+          min-width:120px;
+          border-radius:4px;
+          color:$primary-color;
+          border:1px solid $primary-color;
+          line-height:35px;
+          font-size:13px;
+          padding:0 10px;
+          margin-left:15px;
+          &:active{
+            color:lighten($primary-color, 20%);
+            border-color:lighten($primary-color, 20%);
+          }
+          &.disabled{
+            color:#ccc;
+            border-color:#ccc;
+            pointer-events: none;
+          }
+        }
+      }
       >.button{
         height:45px;
         line-height:45px;
