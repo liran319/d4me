@@ -9,6 +9,12 @@ export default {
         channel:'wx'
       }).then(function(res){
         pingpp.createPayment(res.data, (result, error) => {
+          if(result){
+            alert(result)
+          }
+          if(error){
+            alert(error)
+          }
           if (result == "success") {
             console.log('success')
             // window.location = "/"
