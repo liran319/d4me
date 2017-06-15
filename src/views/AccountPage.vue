@@ -55,7 +55,10 @@
         <div class="icon icon-cart"></div>
         <div>购物车</div>
       </div>
-      <div class="item"></div>
+      <div class="item">
+        <div class="icon icon-address" @click="logout"></div>
+        <div>登出</div>
+      </div>
       <div class="item"></div>
     </div>
   </Page>
@@ -114,6 +117,10 @@
           path: path,
           query: query
         })
+      },
+      logout(){
+        localStorage.clear()
+        window.location.reload()
       }
     }
   }
