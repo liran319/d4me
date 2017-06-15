@@ -6,15 +6,9 @@ export default {
       this.$store.dispatch('order/payOrder',{
         id:this.$route.params.id,
         coupon:this.coupon,
-        channel:'wx'
+        channel:'wx_pub'
       }).then(function(res){
         pingpp.createPayment(res.data, (result, error) => {
-          if(result){
-            alert(result)
-          }
-          if(error){
-            alert(error)
-          }
           if (result == "success") {
             console.log('success')
             // window.location = "/"
