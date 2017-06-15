@@ -1,6 +1,7 @@
 import Axios from '@/utils/axios'
 import _ from 'lodash'
 import store from '../../store'
+import wx_login from '@/utils/wx_login'
 
 const startRequest = function (state, payload) {
   state.hasMore = true
@@ -54,6 +55,9 @@ export default {
   },
   actions: {
     fetch ({ commit }, payload = {}) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get('/coupons/', payload.options)
@@ -66,6 +70,9 @@ export default {
       return promise
     },
     fetchMore ({ commit }, { options, search }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get('/coupons/', payload.options)
@@ -78,6 +85,9 @@ export default {
       return promise
     },
     addCoupon ({ commit }, { code }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.post(`/coupons/`, {
         code: code,
         auth_token: store.state.users.auth_token

@@ -1,6 +1,7 @@
 import Axios from '@/utils/axios'
 import _ from 'lodash'
 import store from '../../store'
+import wx_login from '@/utils/wx_login'
 
 const startRequest = function (state, payload) {
   state.hasMore = true
@@ -59,6 +60,9 @@ export default {
   },
   actions: {
     fetch ({ commit }, payload = {}) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get('/orders/', payload.options)
@@ -71,6 +75,9 @@ export default {
       return promise
     },
     fetchOne ({ commit }, {id}) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.get(`/orders/${id}/`, {
         params:{
           auth_token : store.state.users.auth_token
@@ -85,6 +92,9 @@ export default {
       return promise
     },
     fetchMore ({ commit }, payload) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get('/orders/', payload.options)
@@ -97,6 +107,9 @@ export default {
       return promise
     },
     updateOrder ({ commit }, {id, address_id, order_type}) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.patch(`/orders/${id}/`, {
         auth_token:store.state.users.auth_token,
         address_id: address_id,
@@ -104,6 +117,9 @@ export default {
       })
     },
     quickOrder({ commit },{value, product_id, variant_id}){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/orders/quick/`, {
         auth_token: store.state.users.auth_token,
         product_id: product_id,
@@ -112,12 +128,18 @@ export default {
       })
     },
     createOrder({ commit },{ items }){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/orders/`, {
         auth_token: store.state.users.auth_token,
         items: items
       })
     },
     payOrder({ commit }, { id, channel, coupon }){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/orders/${id}/pay/`, {
         auth_token: store.state.users.auth_token,
         coupon: coupon,
@@ -125,16 +147,25 @@ export default {
       })
     },
     acceptOrder ({ commit }, { id }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/orders/${id}/accept/`, {
         auth_token: store.state.users.auth_token
       })
     },
     cancelOrder ({ commit }, { id }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/orders/${id}/cancel/`, {
         auth_token: store.state.users.auth_token
       })
     },
     refundOrder ({ commit }, { id, amount }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/orders/${id}/refund/`, {
         auth_token: store.state.users.auth_token,
         amount: amount

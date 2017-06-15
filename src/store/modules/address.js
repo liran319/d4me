@@ -1,6 +1,7 @@
 import Axios from '@/utils/axios'
 import _ from 'lodash'
 import store from '../../store'
+import wx_login from '@/utils/wx_login'
 
 const startRequest = function (state, payload) {
   state.hasMore = true
@@ -56,6 +57,9 @@ export default {
     fetch ({ commit }, payload = {}) {
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.get('/addresses/', payload.options)
       commit('start', promise)
       promise.then(function(res){
@@ -68,6 +72,9 @@ export default {
     fetchMore ({ commit }, { options, search }) {
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.get('/addresses/', payload.options)
       commit('start', promise)
       promise.then(function(res){
@@ -78,16 +85,25 @@ export default {
       return promise
     },
     setDefaultAddress({ commit }, { id }){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/addresses/${id}/set_default`,{
         auth_token: store.state.users.auth_token
       })
     },
     addAddress({ commit }, { data }){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post('/addresses/',Object.assign({}, data, {
         auth_token: store.state.users.auth_token
       }))
     },
     removeAddress({ commit }, { id }){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.delete(`/addresses/${id}`,{
         params:{
           auth_token: store.state.users.auth_token

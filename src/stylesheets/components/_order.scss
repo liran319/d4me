@@ -159,3 +159,48 @@
     }
   }
 }
+
+#order-detail-success-page{
+  >.content{
+    @include scroller-container(false, false);
+    text-align: center;
+    @include display(flex);
+    @include flex-direction(column);
+    >.price{
+      font-size:24px;
+      color:$primary-color;
+      margin-top:35px;
+      margin-bottom:15px;
+    }
+    >.title{
+      font-size:18px;
+    }
+    >.divider{
+      height:1px;
+      width:90%;
+      margin:20px auto 10px auto;
+      background-color: #DFDFDF;
+    }
+    >.text{
+      color:#666666;
+      font-size:13px;
+      width:90%;
+      margin:0 auto 50px auto;
+    }
+    >footer{
+      @include flex(1);
+      background-color: #fff;
+      padding-top:40px;
+      padding-bottom:30px;
+      >.button{
+        height:45px;
+        line-height:45px;
+        border-radius: 4px;
+        font-size:13px;
+        color:#fff;
+        margin:0 15px;
+        @include linear-gradient(to right, #F4C9CF, #D7B87C);
+      }
+    }
+  }
+}

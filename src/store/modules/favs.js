@@ -1,6 +1,7 @@
 import Axios from '@/utils/axios'
 import _ from 'lodash'
 import store from '../../store'
+import wx_login from '@/utils/wx_login'
 
 const startRequest = function (state, payload) {
   state.hasMore = true
@@ -54,6 +55,9 @@ export default {
   },
   actions: {
     fetch ({ commit }, payload = {}) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get('/favs/', payload.options)
@@ -66,6 +70,9 @@ export default {
       return promise
     },
     fetchMore ({ commit }, payload = {}) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       payload.options.params = payload.options.params||{}
       payload.options.params.auth_token = store.state.users.auth_token
       const promise = Axios.get('/favs/', payload.options)
@@ -78,6 +85,9 @@ export default {
       return promise
     },
     addFav ({ commit }, { id, type }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.post(`/favs/`, {
         target_id: id,
         target_type: type,
@@ -85,6 +95,9 @@ export default {
       })
     },
     removeFav ({ commit }, { id, type }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       return Axios.delete(`/favs/${id}/`, {
         params:{
           target_id: id,

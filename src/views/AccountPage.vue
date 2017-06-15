@@ -66,12 +66,11 @@
 
 <script>
   import { Toast } from 'mint-ui';
+  import wx_login from '@/utils/wx_login'
   export default {
     data(){
       return {
-        url: "",
-        appId: 'wx5b486ab603b7f0a7',
-        redirect_uri: 'http://app.d4me.com/api/v1/users/wx_login_code'
+        url: ""
       }
     },
     computed: {
@@ -82,8 +81,7 @@
     methods: {
       login(e){
         if (!this.user.auth_token) {
-          var url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appId}&redirect_uri=${this.redirect_uri}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
-          window.location.href = url
+          wx_login()
           e.preventDefault()
         }
       },

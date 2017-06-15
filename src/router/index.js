@@ -14,6 +14,7 @@ import ProductDetailPage from '@/views/ProductDetailPage'
 import CartPage from '@/views/CartPage'
 import OrderPage from '@/views/OrderPage'
 import OrderDetailPage from '@/views/OrderDetailPage'
+import OrderDetailSuccessPage from '@/views/OrderDetailSuccessPage'
 import FavoritePage from '@/views/FavoritePage'
 import VoucherPage from '@/views/VoucherPage'
 import ContactPage from '@/views/ContactPage'
@@ -123,6 +124,16 @@ export default hooks(new Router({
       path: '/order/:id',
       name: 'order/detail',
       component: OrderDetailPage,
+      meta:{
+        bottom:0,
+        hideTab:true,
+        sub:"order"
+      }
+    },
+    {
+      path: '/order/:id/success',
+      name: 'order/success',
+      component: OrderDetailSuccessPage,
       meta:{
         bottom:0,
         hideTab:true,

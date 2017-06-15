@@ -1,6 +1,7 @@
 import Axios from '@/utils/axios'
 import _ from 'lodash'
 import store from '../../store'
+import wx_login from '@/utils/wx_login'
 
 const startRequest = function (state, payload) {
   state.hasMore = true
@@ -49,6 +50,9 @@ export default {
   },
   actions: {
     fetch ({ commit }) {
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.get('/orders/cart_items/', {
         params:{
           auth_token: store.state.users.auth_token
@@ -63,6 +67,9 @@ export default {
       return promise
     },
     add_item({ commit }, { product_id, variant_id, quantity}){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.post('/orders/add_cart_item/', {
         auth_token: store.state.users.auth_token,
         product_id: product_id,
@@ -72,6 +79,9 @@ export default {
       return promise
     },
     remove_item({ commit }, { product_id, variant_id}){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.post('/orders/remove_cart_item/', {
         auth_token: store.state.users.auth_token,
         product_id: product_id,
@@ -80,6 +90,9 @@ export default {
       return promise
     },
     set_item({ commit }, { product_id, variant_id, quantity}){
+      if(!store.state.users.auth_token){
+        wx_login()
+      }
       const promise = Axios.post('/orders/set_cart_item/', {
         auth_token: store.state.users.auth_token,
         product_id: product_id,
