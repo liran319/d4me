@@ -43,11 +43,8 @@
         return this.$store.state.products.data.products || []
       }
     },
-    mounted(){
-      this.fetchProduct()
-    },
     methods:{
-      fetchProduct(){
+      fetchData(){
         this.page = 1;
         if(this.selected == 'latest')this.page = 2
         var params;
