@@ -46,7 +46,7 @@
     margin-top: 10px;
     .header {
       padding: 15px;
-      border-bottom: 2px solid #ddd;
+      border-bottom: 1px solid #F4F4F4;
       @include display(flex);
       @include justify-content(space-between);
       .right {
@@ -75,23 +75,31 @@
   }
 
   .expand {
+    width:100%;
     margin-top: 10px;
     background-color: #fff;
     position: relative;
-    @include clearfix();
-    > .item {
+    display: table;
+    .row{
+      display:table-row;
+    }
+    .item {
       position: relative;
       text-align: center;
       font-size: 13px;
       width: 25%;
       height:0;
       padding-bottom:25%;
-      display: block;
-      float:left;
-      box-shadow: 0 0 0 1px #f8f8f8;
-      > .icon {
-        margin-top:15px;
-        margin-bottom: 5px;
+      display: table-cell;
+      border:1px solid #f8f8f8;
+      >div{
+        position: absolute;
+        top:50%;
+        left:50%;
+        @include transform(translate(-50%,-50%));
+        > .icon {
+          margin-bottom: 10px;
+        }
       }
     }
   }

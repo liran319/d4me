@@ -31,35 +31,53 @@
       </div>
     </div>
     <div class="expand">
-      <div class="item">
-        <div class="icon icon-voucher" @click="go('/voucher')"></div>
-        <div>代金券</div>
+      <div class="row">
+        <div class="item">
+          <div>
+            <div class="icon icon-voucher" @click="go('/voucher')"></div>
+            <div>代金券</div>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="icon icon-address" @click="go('/address')"></div>
+            <div>地址管理</div>
+          </div>
+        </div>
+        <div class="item is-selected" @click="go('/contact')">
+          <div>
+            <div class="icon icon-contact"></div>
+            <div>联系客服</div>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="icon icon-download" @click="go('/download')"></div>
+            <div>下载APP</div>
+          </div>
+        </div>
       </div>
-      <div class="item">
-        <div class="icon icon-address" @click="go('/address')"></div>
-        <div>地址管理</div>
+      <div class="row">
+        <div class="item">
+          <div>
+            <div class="icon icon-favorite" @click="go('/favorite')"></div>
+            <div>收藏</div>
+          </div>
+        </div>
+        <div class="item is-selected" @click="go('/cart')">
+          <div>
+            <div class="icon icon-cart"></div>
+            <div>购物车</div>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            <div class="icon icon-address" @click="logout"></div>
+            <div>登出</div>
+          </div>
+        </div>
+        <div class="item"></div>
       </div>
-      <div class="item is-selected" @click="go('/contact')">
-        <div class="icon icon-contact"></div>
-        <div>联系客服</div>
-      </div>
-      <div class="item">
-        <div class="icon icon-download" @click="go('/download')"></div>
-        <div>下载APP</div>
-      </div>
-      <div class="item">
-        <div class="icon icon-favorite" @click="go('/favorite')"></div>
-        <div>收藏</div>
-      </div>
-      <div class="item is-selected" @click="go('/cart')">
-        <div class="icon icon-cart"></div>
-        <div>购物车</div>
-      </div>
-      <div class="item">
-        <div class="icon icon-address" @click="logout"></div>
-        <div>登出</div>
-      </div>
-      <div class="item"></div>
     </div>
   </Page>
 </template>
