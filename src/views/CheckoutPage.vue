@@ -54,6 +54,7 @@
 
 <script>
   import order from '@/mixins/order'
+  import _ from 'lodash'
   export default {
     mixins:[order],
     computed: {
@@ -69,6 +70,34 @@
     },
     methods:{
       fetch(){
+        var self = this
+        this.$store.dispatch('order/fetchOne',{
+          id:this.$route.params.id
+        }).then(function(){
+          setTimeout(function(){
+            if(self.order.order_type=='online'&&!self.order.address){
+              self.$store.dispatch('addresses/fetch',{options:{params:{}}}).then(function(res){
+                var default_address = null
+                _.forEach(res.data.addresses, function(item){
+                  if(item.default){
+                    default_address = item.id
+                  }
+                })
+                if(default_address){
+                  self.$store.dispatch('orders/updateOrder',{
+                    id:self.$route.params.id,
+                    address_id: default_address,
+                    order_type: 'online'
+                  }).then(function(){
+                    self.refresh()
+                  })
+                }
+              })
+            }
+          },0)
+        })
+      },
+      refresh(){
         this.$store.dispatch('order/fetchOne',{
           id:this.$route.params.id
         })
