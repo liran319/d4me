@@ -46,21 +46,21 @@ export default hooks(new Router({
       meta:{}
     },
     {
-      path: '/collection',
-      name: 'collection',
+      path: '/articles',
+      name: 'articles',
       component: CollectionPage,
       meta:{
         noPageAnimation:true
       }
     },
     {
-      path: '/collection/:id',
-      name: 'collection_detail',
+      path: '/articles/:id',
+      name: 'articles/detail',
       component: CollectionDetailPage,
       meta:{
         hideTab:true,
         bottom:0,
-        sub:"collection"
+        sub:"articles"
       }
     },
     {
@@ -89,7 +89,7 @@ export default hooks(new Router({
       meta:{
         bottom:50,
         hideTab:true,
-        sub:"product"
+        sub:"products"
       }
     },
     {

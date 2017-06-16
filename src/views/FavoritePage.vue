@@ -20,7 +20,7 @@
           <like-button type="Product" :id="item.id" :active="item.fav"/>
         </template>
         <template v-else-if="item.target_type=='Article'">
-          <router-link :to="'/collection/'+item.id" class="image" :style="{backgroundImage:'url('+item.image+')'}"></router-link>
+          <router-link :to="'/articles/'+item.id" class="image" :style="{backgroundImage:'url('+item.image+')'}"></router-link>
           <div class="title">{{item.title}}</div>
           <like-button type="Article" :id="item.id" :active="item.fav"/>
         </template>

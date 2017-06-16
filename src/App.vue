@@ -14,7 +14,7 @@
           <div slot="icon" class="icon icon-category"></div>
           分类
         </mt-tab-item>
-        <mt-tab-item id="collection">
+        <mt-tab-item id="articles">
           <div slot="icon" class="icon icon-collection"></div>
           专题
         </mt-tab-item>
