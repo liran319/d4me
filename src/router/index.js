@@ -74,8 +74,8 @@ export default hooks(new Router({
       }
     },
     {
-      path: '/product',
-      name: 'product',
+      path: '/products',
+      name: 'products',
       component: ProductPage,
       meta:{
         bottom:0,
@@ -83,8 +83,8 @@ export default hooks(new Router({
       }
     },
     {
-      path: '/product/:id',
-      name: 'product/detail',
+      path: '/products/:id',
+      name: 'products/detail',
       component: ProductDetailPage,
       meta:{
         bottom:50,

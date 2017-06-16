@@ -43,7 +43,7 @@
       <div class="related-title"></div>
       <div class="related-product-list" v-masonry transition-duration="0" item-selector=".product-item">
         <div v-masonry-tile column-width=".product-item"  class="product-item" v-for="p in product.related" :key="product.id">
-          <router-link :to="'/product/'+p.id">
+          <router-link :to="'/products/'+p.id">
             <img :src="p.image" :alt="p.title"/>
           </router-link>
           <div class="brand-title">{{p.brand&&p.brand.title}}</div>

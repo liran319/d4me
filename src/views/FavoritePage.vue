@@ -14,7 +14,7 @@
     >
       <div :class="'favs-item '+item.target_type" v-for="item in favs" :key="item.id">
         <template v-if="item.target_type=='Product'">
-          <router-link :to="'/product/'+item.id" class="image" :style="{backgroundImage:'url('+item.image+')'}"></router-link>
+          <router-link :to="'/products/'+item.id" class="image" :style="{backgroundImage:'url('+item.image+')'}"></router-link>
           <div class="title">{{item.title}}</div>
           <div class="price">￥{{item.price}}</div>
           <like-button type="Product" :id="item.id" :active="item.fav"/>

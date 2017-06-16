@@ -16,7 +16,7 @@
     methods: {
       onSearch(e){
         this.$router.push({
-          path: "/product", query: {
+          path: "/products", query: {
             search: this.$refs.search.value
           }
         })

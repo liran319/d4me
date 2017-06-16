@@ -14,7 +14,7 @@
       <div class="related-title"></div>
       <div class="related-product-list">
         <div class="product-item" v-for="product in article.products" :key="product.id">
-          <router-link :to="'/product/'+product.id" class="image" :style="{backgroundImage:'url('+product.image+')'}"></router-link>
+          <router-link :to="'/products/'+product.id" class="image" :style="{backgroundImage:'url('+product.image+')'}"></router-link>
           <div class="title">{{product.title}}</div>
           <div class="price">￥{{product.price}}</div>
         </div>

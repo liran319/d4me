@@ -3,7 +3,7 @@
     <div class="banner"></div>
     <div class="title"></div>
     <div class="product-list">
-      <router-link :to="'/product/'+item.id" class="product-item" v-for="item in products" :key="item.id">
+      <router-link :to="'/products/'+item.id" class="product-item" v-for="item in products" :key="item.id">
         <div class="info">
           <div class="title">{{item.title}}</div>
           <div class="price">新人专享价: ￥{{item.price}}</div>

@@ -13,7 +13,7 @@
          infinite-scroll-disabled="hasMore"
          infinite-scroll-distance="10">
       <div v-masonry-tile column-width=".product-item" class="product-item" v-for="item in products" :key="item.id">
-        <router-link :to="'/product/'+item.id">
+        <router-link :to="'/products/'+item.id">
           <img :src="item.image" :alt="item.title"/>
         </router-link>
         <div class="brand-title">{{item.brand.title}}</div>

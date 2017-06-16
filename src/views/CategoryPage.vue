@@ -42,7 +42,7 @@
             category:null
           })
           this.$router.push({
-            path:'/product',
+            path:'/products',
             query:{
               category:category[0]=="全部"?undefined:category[0]
             }
@@ -51,7 +51,7 @@
       },
       onClickSubCategory(category){
         this.$router.push({
-          path:'/product',
+          path:'/products',
           query:{
             category:category[0]=="全部配饰"?"配饰":category[0]
           }
