@@ -40,8 +40,8 @@
         <div class="text">如果出现尺码不合，请在签收后48小时内联系客服，我们将为您更换同款不同码的商品。</div>
         <div class="text">退回的商品必须无破损，无污渍，无穿着或使用痕迹。请保留吊牌完整，并用原包装退回。</div>
       </div>
-      <div class="related-title"></div>
-      <div class="related-product-list" v-masonry transition-duration="0" item-selector=".product-item">
+      <div class="related-title" v-show="product.related&&product.related.length"></div>
+      <div class="related-product-list" v-masonry transition-duration="0" item-selector=".product-item"  v-show="product.related&&product.related.length">
         <div v-masonry-tile column-width=".product-item"  class="product-item" v-for="p in product.related" :key="product.id">
           <router-link :to="'/products/'+p.id">
             <img :src="p.image" :alt="p.title"/>

@@ -1,5 +1,5 @@
 <template>
-  <Page id="collection-detail-page" :style="{backgroundImage:'url('+article.image+')'}">
+  <Page id="collection-detail-page" :style="{paddingTop:padding+'px',backgroundImage:'url('+article.image+')'}">
     <like-button type="Article" :id="article.id" :active="article.fav"/>
     <div class="loading-view" v-if="pending">
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
@@ -11,8 +11,8 @@
         <img v-if="item.tag=='image'" class="image" :src="item.content"/>
         <div v-if="item.tag=='text'" class="text">{{item.content}}</div>
       </div>
-      <div class="related-title"></div>
-      <div class="related-product-list">
+      <div class="related-title" v-show="article.products&&article.products.length"></div>
+      <div class="related-product-list" v-show="article.products&&article.products.length">
         <div class="product-item" v-for="product in article.products" :key="product.id">
           <router-link :to="'/products/'+product.id" class="image" :style="{backgroundImage:'url('+product.image+')'}"></router-link>
           <div class="title">{{product.title}}</div>
@@ -27,6 +27,7 @@
   export default {
     data(){
       return {
+        padding:300,
       }
     },
     computed: {
@@ -38,9 +39,21 @@
       }
     },
     methods:{
+      loadImage(url){
+        var self = this
+        var image = new Image()
+        var width = window.screen.width
+        image.onload = function(){
+          self.padding = image.height/image.width*width
+        }
+        image.src = url
+      },
       fetch(){
+        var self = this
         this.$store.dispatch('article/fetchOne',{
           id:this.$route.params.id
+        }).then(function(){
+          self.loadImage(self.article.image)
         })
       }
     },

@@ -10,7 +10,7 @@
          v-infinite-scroll="fetchMore"
          infinite-scroll-disabled="hasMore"
          infinite-scroll-distance="10">
-      <div class="collection-item" v-for="item in articles" :key="item.id">
+      <div :class="{'collection-item':true, list:item.products&&item.products.length}" v-for="item in articles" :key="item.id">
         <router-link class="banner-item" :to="'/articles/'+item.id">
           <div class="banner" :style="{backgroundImage:'url('+item.image+')'}" :alt="item.title"/>
           <div class="title">

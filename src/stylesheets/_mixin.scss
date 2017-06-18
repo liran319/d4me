@@ -74,10 +74,13 @@
   }
 }
 
-@mixin scroller-container($header, $footer){
+@mixin scroller-container($header, $footer, $banner:false){
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  $height:$banner-height;
+  $height:0;
+  @if $banner{
+    $height:$banner-height;
+  }
   @if $header {
     $height:$height + $header-height;
   }

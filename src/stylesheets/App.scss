@@ -1,13 +1,11 @@
 //mixin
 @import "bourbon/bourbon";
-
 // normalize css
 @import 'normalize.scss';
 @import 'scaffold.scss';
 @import 'icon';
 @import 'variables.scss';
 @import 'mixin.scss';
-
 //App Components
 @import "mintui";
 @import 'components/page';
@@ -27,14 +25,59 @@
 @import 'components/address';
 @import 'components/download';
 @import 'components/success';
-
 // Global Transition Effects
 @import 'transition.scss';
 
-.mint-popup,.mint-actionsheet{
-  width:100%;
-  z-index:999999!important;
+.mint-popup, .mint-actionsheet {
+  width: 100%;
+  z-index: 999999 !important;
 }
-.mint-toast{
-  z-index:1999999!important;
+
+.mint-toast {
+  z-index: 1999999 !important;
+}
+
+body > .ios {
+  #account-page {
+    @include scroller-container(false, true, true);
+  }
+  #address-page > .content {
+    @include scroller-container(true, false, true);
+  }
+  #cart-page > .cart-list {
+    @include scroller-container(false, true, true);
+  }
+  #category-page .category-list {
+    @include scroller-container(false, true, true);
+  }
+  #collection-page .collections-list {
+    @include scroller-container(true, true, true);
+  }
+  #coupon-page > .coupons-list {
+    @include scroller-container(true, false, true);
+  }
+  #favorite-page > .favs-list {
+    @include scroller-container(true, false, true);
+  }
+  #order-page .order-list {
+      @include scroller-container(true, false, true);
+  }
+  #order-detail-page > .content {
+    @include scroller-container(false, false, true);
+  }
+  #order-detail-success-page > .content {
+    @include scroller-container(false, false, true);
+  }
+  #home-page .product-list {
+    @include scroller-container(true, true, true);
+  }
+  #product-page .product-list {
+    @include scroller-container(true, false, true);
+  }
+  #product-detail-page  .product-content {
+    margin-bottom: $banner-height + $header-height;
+  }
+  #collection-detail-page .collection-content {
+    margin-bottom: $banner-height;
+  }
 }
