@@ -54,7 +54,7 @@
           path:'/products',
           query:{
             category:"配饰",
-            subcategory:category[0]
+            subcategory:category[0]=="全部配饰"?undefined:category[0]
           }
         })
       }
