@@ -53,7 +53,8 @@
         this.$router.push({
           path:'/products',
           query:{
-            category:category[0]=="全部配饰"?"配饰":category[0]
+            category:"配饰",
+            subcategory:category[0]
           }
         })
       }
