@@ -108,7 +108,7 @@
     },
     watch:{
       selected(value){
-        this.fetchProduct()
+        this.fetchData()
       }
     }
   }
