@@ -205,12 +205,15 @@
         >input{
           min-width:0;
           padding:8px;
-          -webkit-appearance: none;
+          -webkit-appearance: none!important;
           outline: none!important;
           border:0;
+          border-radius: 0!important;
+          box-shadow: none!important;
           font-size:16px;
           border-bottom:1px solid #CACACA;
           @include flex(1);
+          @include user-select(text!important);
         }
         >.button{
           min-width:120px;
