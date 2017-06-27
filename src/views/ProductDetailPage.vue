@@ -163,7 +163,7 @@
               quantity:this.quantity
             }).then(function(res){
               self.showVariant = false
-              self.$router.push(`/checkout/${res.data.order.id}/`)
+              self.$router.push(`/checkout/${res.data.order.id}`)
             })
           }else{
             this.$store.dispatch('cart/add_item',{

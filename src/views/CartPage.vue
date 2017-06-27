@@ -102,7 +102,7 @@
             return item.id
           })
         }).then(function(res){
-          self.$router.push(`/checkout/${res.data.order.id}/`)
+          self.$router.push(`/checkout/${res.data.order.id}`)
         })
       }
     },
