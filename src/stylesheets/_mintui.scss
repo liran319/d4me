@@ -387,6 +387,9 @@
   right: 0;
   position: relative;
 }
+.mint-cell-value>input{
+  @include user-select(text);
+}
 /* Cell Component */
 /* Header Component */
 /* Button Component */
