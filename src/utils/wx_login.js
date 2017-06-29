@@ -4,5 +4,6 @@ export default function(){
     url+=`&state=product-${RegExp.$1}`
   }
   url+='#wechat_redirect'
+  alert(localStorage.getItem('auth_token'))
   window.location.href = url
 }
