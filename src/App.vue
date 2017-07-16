@@ -55,7 +55,6 @@
       //微信登陆
       if(localStorage.getItem('auth_token')||this.$route.query.token){
         const auth_token = this.$route.query.token||localStorage.getItem('auth_token')
-        alert(auth_token)
         localStorage.setItem('auth_token', auth_token)
         this.$store.commit('users/set_token', {
           auth_token: auth_token

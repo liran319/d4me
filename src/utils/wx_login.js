@@ -4,5 +4,6 @@ export default function(){
     url+=`&state=product-${RegExp.$1}`
   }
   url+='#wechat_redirect'
-  window.location.href = url
+  alert(url)
+  // window.location.href = url
 }
