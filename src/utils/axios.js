@@ -1,9 +1,12 @@
 import axios from 'axios'
+import url from 'url'
 import { Toast } from 'mint-ui';
 
+var parser = url.parse(location.href)
 
-if(this.$route.query.token) {
-  localStorage.setItem('auth_token', this.$route.query.token)
+if(parser.query&&/token\=(.*)&?/.test(parser.query)){
+  const auth_token = RegExp.$1
+  localStorage.setItem("auth_token", auth_token)
 }
 
 const Axios = axios.create({
