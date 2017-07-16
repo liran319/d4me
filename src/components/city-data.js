@@ -4160,7 +4160,9 @@ export default [ {
       "label": "龙岗区",
       "value": "440307",
       "children": []
-    }, {"label": "盐田区", "value": "440308", "children": []} ]
+    }, {"label": "盐田区", "value": "440308", "children": []
+    }, {"label": "龙华区", "value": "440309", "children": []}
+    ]
   }, {
     "label": "珠海市",
     "value": "440400",
@@ -6556,7 +6558,9 @@ export default [ {
       "label": "米东区",
       "value": "650109",
       "children": []
-    }, {"label": "乌鲁木齐县", "value": "650121", "children": []} ]
+    }, {"label": "乌鲁木齐县", "value": "650121", "children": []}
+      , {"label": "米泉县", "value": "650122", "children": []}
+    ]
   }, {
     "label": "克拉玛依市",
     "value": "650200",

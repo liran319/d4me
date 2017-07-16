@@ -34,7 +34,7 @@
         </div>
         <div class="total-price">
           <div class="label">订单总计</div>
-          <div class="value">￥{{order.final_price}}</div>
+          <div class="value">￥{{final_price}}</div>
         </div>
       </div>
       <div class="order-use-coupon" @click="goSelectCoupon">
@@ -66,6 +66,13 @@
       },
       order(){
         return this.$store.state.order.data.order || {}
+      },
+      final_price(){
+      	var final_price = this.order.final_price||0
+        if(this.coupon&&this.coupon.min_price<=final_price){
+          final_price-=this.coupon.savings_amount
+        }
+      	return final_price
       }
     },
     methods:{

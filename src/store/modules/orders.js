@@ -54,8 +54,8 @@ export default {
     complete: completeRequest,
     more_complete: completeMoreRequest,
     error: errorRequest,
-    useCoupon (state, { id }) {
-      state.coupon = id
+    useCoupon (state, { data }) {
+      state.coupon = data
     }
   },
   actions: {

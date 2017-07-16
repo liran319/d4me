@@ -12,7 +12,7 @@
       <mt-spinner type="double-bounce" color="#DCB76B"></mt-spinner>
     </div>
     <div class="coupons-list">
-      <div class="coupons-item" v-for="item in coupons" :key="item.id" @click="useCoupon(item.id)">
+      <div class="coupons-item" v-for="item in coupons" :key="item.id" @click="useCoupon(item)">
         <div class="content">
           <div class="title">{{item.title}}</div>
           <div class="condition">满{{item.min_price}}可使用</div>
@@ -46,10 +46,16 @@
       }
     },
     methods:{
-      useCoupon(id){
+      useCoupon(item){
+      	var expires = Date.parse(new Date(item.expires_at))
+        var now = Date.parse(new Date())
         if(this.$route.query.checkout){
-          this.$store.commit('order/useCoupon',{id: id})
-          this.$router.back()
+      		if(now<expires){
+            this.$store.commit('order/useCoupon',{data: item})
+            this.$router.back()
+          }else{
+      			alert("优惠券已过期")
+          }
         }
       },
       addCoupon(){

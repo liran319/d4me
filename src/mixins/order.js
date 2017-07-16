@@ -9,7 +9,7 @@ export default {
       }else{
         this.$store.dispatch('order/payOrder',{
           id:id,
-          coupon:this.coupon,
+          coupon:this.coupon&&this.coupon.id,
           channel:'wx_pub'
         }).then(function(res){
           pingpp.createPayment(res.data, (result, error) => {
